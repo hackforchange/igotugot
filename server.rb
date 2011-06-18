@@ -4,5 +4,5 @@ require 'sinatra'
 enable :sessions
   
 get '/' do
-  "welcome"
+  erb :index
 end
