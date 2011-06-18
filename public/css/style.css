@@ -73,6 +73,8 @@ a:hover { color: #036; }
 body {
   font-size:16px;
   line-height:1.1em;
+  background: url('/img/bg-tile.png');
+  
 }
 
 h1 {
@@ -111,17 +113,27 @@ h6 {
   margin:0 auto;
 }
 
-#all-posts {
-  
+#header {
+  height:285px;
+  background: url('/img/sun.png') no-repeat top right;
 }
 
 #main.landing {
   width:500px;
+  padding:40px;
+  background:#fff;
+  -webkit-border-radius: 10px;
+     -moz-border-radius: 10px;
+          border-radius: 10px;
+  -webkit-box-shadow: 0 0 10px #ddd;
+     -moz-box-shadow: 0 0 10px #ddd;
+       -o-box-shadow: 0 0 10px #ddd;
+          box-shadow: 0 0 10px #ddd;
+  margin:-50px auto 0 auto;
 }
 
 
 #branding, #whereareyou {
-  margin:200px 0 0 0;
   padding:20px;
 }
 
