@@ -10,7 +10,14 @@ class User < ActiveRecord::Base
   end    
 end
 
+require 'digest/sha1'
+
 class Post < ActiveRecord::Base
+  before_create :set_edit_url
+  def set_edit_url   
+    # is it awesome to random?
+    self.secret_id = Digest::SHA1.hexdigest("#{rand}")    
+  end
   
 end
 

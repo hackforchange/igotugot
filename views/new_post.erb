@@ -8,6 +8,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width,maximum-scale=1.0" />
     <title>igotugot</title>
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js" type="text/javascript" charset="utf-8"></script>
     <link href='http://fonts.googleapis.com/css?family=Mako&v1' rel='stylesheet' type='text/css'>
   	<link rel="stylesheet" href="/css/style.css" type="text/css" media="screen" />    
@@ -45,14 +46,15 @@
   <header>
     Great Headery
   </header>
-  <form>
+  <form action="/post" method="post">
     <label name="i_got">I got</label>
-    <textarea name="i_got"></textarea>
+    <textarea name="i_got"><%= params['i_got']%></textarea>
     <label name="email">my email <span class="comment"> we only use this to send you the edit url for this post.</span></label>
-    <input type="text" name="email"></input>
+    <input type="text" name="email" value="<%= params['email']%>"></input>
     
     <label name="u_got">U got</label>
-    <textarea name="u_got"></textarea>
+    <textarea name="u_got"><%= params['u_got']%></textarea>
+    <input type='submit'></input>
   </form>  
   <footer>
     Much footery

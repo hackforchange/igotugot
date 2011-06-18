@@ -24,7 +24,7 @@ namespace :db do
         t.column "u_got", :text
         t.column "secret_id", :string
         t.column "lat", :float
-        t.column "long", :float
+        t.column "lng", :float
         t.timestamps 
       end
 
