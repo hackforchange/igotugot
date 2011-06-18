@@ -11,15 +11,28 @@ class User < ActiveRecord::Base
 end
 
 class Post < ActiveRecord::Base
-
+  
 end
 
+require 'json'
+require 'open-uri'
 class Location 
-  def latlong_from_postalcode(postcode)
+  def self.from_postalcode(postcode)
     #there is apparently a postalcode thing
-    "http://maps.googleapis.com/maps/api/geocode/json?sensor=false&address=#{postcode}"
-    lat = "0"
-    long = "0"
-    {:lat => lat, :long => long}
+    location = {}
+    begin
+    url = "http://maps.googleapis.com/maps/api/geocode/json?sensor=false&address=#{postcode}"
+    json = open(url).read
+    parsed_json = JSON(json)
+    parsed_location = parsed_json["results"].first['geometry']['location']
+    location['lat'] = parsed_location['lat'].to_s
+    location['lng'] = parsed_location['lng'].to_s
+    rescue
+    end
+    
+    lat = location['lat'] || "0"
+    lng = location['lng'] || "0"
+    
+    {:lat => lat, :lng => lng}
   end  
 end
