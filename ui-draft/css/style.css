@@ -5,21 +5,13 @@ h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 abbr, address, cite, code, del, dfn, em, img, ins, kbd, q, samp,
 small, strong, sub, sup, var, b, i, dl, dt, dd, ol, ul, li,
 fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, figcaption, figure,
-footer, header, hgroup, menu, nav, section, summary,
-time, mark, audio, video {
+table, caption, tbody, tfoot, thead, tr, th, td {
   margin: 0;
   padding: 0;
   border: 0;
   font-size: 100%;
   font: inherit;
   vertical-align: baseline;
-}
-
-article, aside, details, figcaption, figure,
-footer, header, hgroup, menu, nav, section {
-  display: block;
 }
 
 blockquote, q { quotes: none; }
@@ -69,23 +61,84 @@ a:link { -webkit-tap-highlight-color: #FF5E99; }
 button {  width: auto; overflow: visible; }
 .ie7 img { -ms-interpolation-mode: bicubic; }
 
-body, select, input, textarea { color: #444; }
+body, select, input, textarea, button { color: #444; font-family: 'Mako', arial, serif; }
+input, textarea { border:1px solid #ccc; }
 h1, h2, h3, h4, h5, h6 { font-weight: bold; }
 a, a:active, a:visited { color: #607890; }
 a:hover { color: #036; }
 
 
-/**
- * Primary styles
- *
- * Author: 
- */
+/*MAIN STUFF*/
+
+body {
+  width:960px;
+  margin:0 auto;
+  font-size:16px;
+  line-height:1.1em;
+}
+
+h1 {
+  font-size:36px;
+  line-height:1.1em;
+}
+
+h2 {
+  font-size:32px;
+  line-height:1.1em;
+}
+
+h3 {
+  font-size:28px;
+  line-height:1.1em;
+}
+
+h4 {
+  font-size:20px;
+  line-height:1.1em;
+}
+
+h5 {
+  font-size:16px;
+  line-height:1.1em;
+}
+
+h6 {
+  font-size:10px;
+  line-height:1.1em;
+}
+
+#main {
+  margin:0 auto;
+}
+
+#all-posts {
+  
+}
+
+#main.landing {
+  width:500px;
+}
 
 
+#branding, #whereareyou {
+  margin:200px 0 0 0;
+  padding:20px;
+}
 
+#branding {
+  width:200px;
+  float:left;
+  border-right:1px solid #ccc;
+}
 
+#branding h5 {
+  font-weight:normal;
+}
 
-
+#whereareyou {
+  width:200px;
+  float:left;
+}
 
 
 
