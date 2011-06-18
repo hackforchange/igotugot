@@ -1,6 +1,7 @@
 require 'rubygems'
 require 'sinatra'
 require 'lib/models'
+require 'yaml'
 enable :sessions
   
 get '/' do
@@ -9,3 +10,11 @@ get '/' do
   erb :index
 end
 
+get "/sessions/clear" do
+  session = {}
+  session.to_yaml
+end  
+
+get "/sessions/show" do
+  session.to_yaml
+end  
