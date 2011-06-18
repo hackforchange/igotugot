@@ -10,6 +10,30 @@ get '/' do
   erb :index
 end
 
+post "/location" do
+  puts params
+  postal_code = params['postal_code']
+  if postal_code    
+    location = Location.from_postalcode(postal_code).to_s
+  end
+  if params['lat'] && params['lng'] 
+    location = {}
+    location[:lat] = params['lat']
+    location[:lng] = params['lng']        
+  end
+  session[:lat] = location[:lat]
+  session[:lng] = location[:lng] 
+  redirect "/posts"
+end
+
+get "/posts" do
+  erb :posts  
+end 
+
+get "/posts/new" do
+  erb :new_post  
+end 
+
 get "/sessions/clear" do
   session = {}
   session.to_yaml

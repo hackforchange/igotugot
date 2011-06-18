@@ -19,8 +19,12 @@
         navigator.geolocation.getCurrentPosition(show_map);
       }
       function show_map(position) {
-        var latitude = position.coords.latitude;
-        var longitude = position.coords.longitude;
+        var lat = position.coords.latitude;
+        var lng = position.coords.longitude;
+        console.log([lat, lng])
+        $.post("/location", {lat: lat, lng: lng}, function(){
+          window.location = "/posts"
+        })
       }
     </script>
 </head> 
@@ -33,10 +37,11 @@
       <h1>I Got. You Got.</h1>
       <h5>Share your backyard garden food stuffs.</h5>
     </div>
-    <form id="whereareyou" action="http://maps.googleapis.com/maps/api/geocode/json" method="get">
-      <h3>Where You At?</h3>
-      <input type='hidden' name='sensor' value='false'>     
-      <input  name='address'></input> 
+    
+    <form id="whereareyou" action="/location" method="post">
+      <h3>Wh"ere You At?</h3>
+      <a id="find_me">locate me with my browser</a>
+      <input  name='postal_code'></input> 
       <button type="submit">find me!</button>
     </form>
   </div>
