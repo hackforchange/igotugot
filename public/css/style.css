@@ -61,7 +61,7 @@ a:link { -webkit-tap-highlight-color: #FF5E99; }
 button {  width: auto; overflow: visible; }
 .ie7 img { -ms-interpolation-mode: bicubic; }
 
-body, select, input, textarea, button { color: #444; font-family: 'Mako', arial, serif; }
+body, select, input, textarea, button { color: #444; font-family: 'Droid Sans', arial, serif; }
 input, textarea { border:1px solid #ccc; }
 h1, h2, h3, h4, h5, h6 { font-weight: bold; }
 a, a:active, a:visited { color: #607890; }
@@ -71,8 +71,6 @@ a:hover { color: #036; }
 /*MAIN STUFF*/
 
 body {
-  width:960px;
-  margin:0 auto;
   font-size:16px;
   line-height:1.1em;
 }
@@ -108,6 +106,7 @@ h6 {
 }
 
 #main {
+  width:960px;
   overflow:hidden;
   margin:0 auto;
 }
@@ -142,12 +141,12 @@ h6 {
 }
 
 #footer {
-  
+  height:100px;
+  width:100%;
+  position:absolute;
+  bottom:0;
+  background: url('/img/grass.png') repeat-x center bottom;
 }
-
-
-
-
 
 
 
