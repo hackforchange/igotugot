@@ -8,12 +8,12 @@
     <ul>
       <li>
         <label name="i_got">I Got</label>
-        <textarea name="i_got"><%= params['i_got'] || @post.i_got %></textarea>
+        <textarea name="i_got" id="igot"><%= params['i_got'] || @post.i_got %></textarea>
         <div class="comment">Example: I've got more tomatoes and rhubarb than I can eat.</div>
       </li>
       <li>  
         <label name="u_got">You Got</label>
-        <textarea name="u_got"><%= params['u_got'] || @post.i_got %></textarea>
+        <textarea name="u_got" id="ugot"><%= params['u_got'] || @post.i_got %></textarea>
         <div class="comment">Example: If you've got spinach we've got a deal!</div>
       </li>
       <li>  
@@ -34,17 +34,17 @@
 </div>
 <script type="text/javascript" charset="utf-8">
   $(function() {
-    // $("#new-post").validate({
-    //       rules: {
-    //         email: {
-    //           required: true,
-    //           email: true
-    //         },
-    //         contact: {
-    //           required: true
-    //         }
-    //       }
-    //     });
+    $("#new-post").submit(function(){
+      var igot = $("#igot").val();
+      var ugot = $("#ugot").val();
+      var contact = $("#contact").val();
+      var email = $("#email").val();
+
+      if ( igot == '' || ugot == '' || contact == '' || email == '' ){
+        alert('all fields are required');
+        return false;
+      }
+    });
   });
 </script>
 
