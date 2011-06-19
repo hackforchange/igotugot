@@ -4,26 +4,26 @@
 
 <div id="main" class="new-post">
 
-  <form action="/posts" method="post" id="new-post">
+  <form action="/post" method="post" id="new-post">
     <ul>
       <li>
         <label name="i_got">I Got</label>
-        <textarea name="i_got"><%= params['i_got']%></textarea>
+        <textarea name="i_got"><%= params['i_got'] || @post.i_got %></textarea>
         <div class="comment">Example: I've got more tomatoes and rhubarb than I can eat.</div>
       </li>
       <li>  
         <label name="u_got">You Got</label>
-        <textarea name="u_got"><%= params['u_got']%></textarea>
+        <textarea name="u_got"><%= params['u_got'] || @post.i_got %></textarea>
         <div class="comment">Example: If you've got spinach we've got a deal!</div>
       </li>
       <li>  
         <label name="contact">How do you want people to contact you?</label>
-        <textarea name="contact"><%= params['contact']%></textarea>
+        <textarea name="contact"><%= params['contact'] || @post.contact_method %></textarea>
         <div class="comment">Example: Please email me at boom@example.com or give me a call at work: 555-555-5555.</div>
       </li>
       <li>
         <label name="email">Email</label>
-        <input type="text" name="email" value="<%= params['email']%>" placeholder="example@example.com"></input>
+        <input type="text" name="email" value="<%= params['email'] || @user.email %>" placeholder="example@example.com"></input>
         <div class="comment">Don't worry, we won't share your email with anyone. We only need it so you can manage your listing.</div>
       </li>
       <li>

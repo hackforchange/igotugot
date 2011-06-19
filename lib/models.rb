@@ -8,6 +8,7 @@ ActiveRecord::Base.establish_connection dbconfig['production']
 class User < ActiveRecord::Base
   has_many :tags, :through => :taggings
   has_many :taggings
+  has_many :posts
 end
 
 require 'digest/sha1'
@@ -16,6 +17,7 @@ class Post < ActiveRecord::Base
   before_create :set_edit_url
   has_many :tags, :through => :taggings
   has_many :taggings
+  belongs_to :user
   def set_edit_url   
     # is it awesome to random?
     self.secret_id = Digest::SHA1.hexdigest("#{rand}")    

@@ -16,6 +16,7 @@ namespace :db do
         t.column "email", :string
         t.column "lat", :float
         t.column "lng", :float
+        t.column "contact_method", :string
         t.column "postal_code", :string
         t.timestamps 
       end
@@ -23,9 +24,11 @@ namespace :db do
       create_table "posts", :force => true do |t|    
         t.column "i_got", :text
         t.column "u_got", :text
+        t.column "contact_method", :text
         t.column "secret_id", :string
         t.column "lat", :float
         t.column "lng", :float
+        t.column "user_id", :integer
         t.timestamps 
       end
 

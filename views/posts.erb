@@ -18,6 +18,10 @@
             <%end%>
             </ul>
           </div> 
+          <% if post.user == @user %>
+           <a href="/post/<%= post.secret_id %>/edit"> edit </a>
+          <% end %>
+
         </a>
        </li>
       <% end %>  
