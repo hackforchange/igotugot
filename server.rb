@@ -53,6 +53,8 @@ end
 post "/location" do
   puts params
   postal_code = params['postal_code']
+  postal_code.gsub! /' '/, ""
+  postal_code.upcase!
   if postal_code    
     location = Location.from_postalcode(postal_code).to_s
     @user.postal_code = postal_code    
@@ -62,9 +64,10 @@ post "/location" do
     location = {}
     location[:lat] = params['lat']
     location[:lng] = params['lng']        
+    @user.lat = location[:lat] || location['lat']
+    @user.lng = location[:lng] || location['lng']
+    
   end
-  @user.lat = location[:lat] || location['lat']
-  @user.lng = location[:lng] || location['lng']
   @user.save
   p @user
   
