@@ -4,13 +4,13 @@
 
   <div id="main" class="single-post">
     <h5>I Got</h5> 
-    <div class="mine"><%=  @post.i_got%> </div>
+    <div class="mine"><%= h(@post.i_got)%> </div>
     <h5>You Got</h5>  
-    <div class="yours"><%=  @post.u_got%> </div>
+    <div class="yours"><%= h(@post.u_got)%> </div>
     <div id="tags">
       <ul>
       <% @post.tags.each do |tag| %>
-        <li><%= tag.name %></li>
+        <li><a href="/posts/nearby/tagged/<%= tag.name %>"><%= tag.name %></a></li>
       <%end%>
       </ul>
       <form id="new_tag"><input type="text" id='tag' placeholder="add another tag"></input></form>
@@ -26,7 +26,7 @@
           //success
           console.log(data)
           if (data != "") {
-            $('#tags ul').append("<li>"+ data+"</li>")
+            $('#tags ul').append("<li><a href='/posts/nearby/tagged/"+ data+"'>" + data + "</li>")
           }
         })
         e.preventDefault()

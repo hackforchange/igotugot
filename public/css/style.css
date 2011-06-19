@@ -144,6 +144,20 @@ h6 {
 #main.single-post {
   
 }
+#whoami {
+  padding: 4px;
+  background-color: #bada55;
+}
+#whoami h4 {
+  display: inline;
+  font-size: 14px;
+  
+}
+#whoami input , #whoami button, #whoami a{
+  display: inline;
+  font-size: 14px;
+  padding: 2px;  
+}
 
 #post div#tags ul li{
   display: inline;

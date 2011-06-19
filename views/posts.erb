@@ -8,9 +8,9 @@
        <li class="post">
         <a href="/post/<%= post.id %>">
           <h5>I Got</h5> 
-          <div class="mine"><%=  post.i_got%> </div>
+          <div class="mine"><%=h post.i_got%> </div>
           <h5>You Got</h5>  
-          <div class="yours"><%=  post.u_got%> </div>
+          <div class="yours"><%=h post.u_got%> </div>
           <div id="tags">
             <ul>
             <% post.tags.each do |tag| %>
