@@ -34,7 +34,7 @@ namespace :db do
       end
 
       create_table "tags", :force => true do |t|    
-        t.column "name", :string
+        t.column "name", :string 
         t.timestamps 
       end
       create_table "taggings", :force => true do |t|    

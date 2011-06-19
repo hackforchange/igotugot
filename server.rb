@@ -166,17 +166,17 @@ post "/tag/:post_id/as/:tag_name" do
   if request.xhr?
     tag.name
   else
-    redirect "/posts/#{post.id}"
+    redirect "/post/#{post.id}"
   end
 end  
 
-post "/untag/:post_id/as/:tag_name" do
+get "/untag/:post_id/as/:tag_name" do
   post = Post.find(params[:post_id])
   tag = Tag.find_by_name(params[:tag_name])
-
+  post.tags.delete(tag)
   if request.xhr?
   else
-    redirect "/posts/#{post.id}"
+    redirect "/post/#{post.id}"
   end
 end  
 

@@ -28,6 +28,7 @@ end
 class Tag < ActiveRecord::Base
     has_many :posts, :through => :taggings
     has_many :users, :through => :taggings
+    has_many :taggings
     after_create :kill_memos
     def self.list
       @tags ||= self.all.collect{|tag| tag.name}

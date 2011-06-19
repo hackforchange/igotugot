@@ -15,7 +15,7 @@
     <div id="tags">
       <ul>
       <% @post.tags.each do |tag| %>
-        <li><a href="/posts/nearby/tagged/<%= tag.name %>"><%= tag.name %></a></li>
+        <li><a href="/posts/nearby/tagged/<%= tag.name %>"><%= tag.name %></a> <a class="delete_tag" href="/untag/<%= @post.id %>/as/<%= tag.name %>">x</a></li>
       <%end%>
       </ul>
       <form id="new_tag"><input type="text" id='tag' placeholder="add another tag"></input></form>

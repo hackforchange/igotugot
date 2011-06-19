@@ -28,11 +28,13 @@
         <div class="comment">Don't worry, we won't share your email with anyone. We only need it so you can manage your listing.</div>
       </li>
       <% end %>
+      <% unless @post.tags.first %>
       <li>
         <label name="email">Tags</label>
-        <input type="text" name="tags" id="tags" value="<%= params['email'] %>" placeholder="beans, fresh"></input>
+        <input type="text" name="tags" id="tags" value="<%= params['tags'] %>" placeholder="beans, fresh"></input>
         <div class="comment">Tags, comma separated<br> for example: beans, the best, fresh, not wormy</div>
       </li>
+      <% end %>
       <li>
         <% if @editing %>
           <button type='submit'>Update</button>
