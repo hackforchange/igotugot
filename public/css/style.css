@@ -230,6 +230,10 @@ a.post-link:hover {
   border-bottom:1px dashed #ccc;
 }
 
+.post .contact {
+  font-size:12px;
+}
+
 #tags ul {
   margin:10px 0 0 0;
   overflow:hidden;
@@ -238,12 +242,25 @@ a.post-link:hover {
 #tags ul li {
   list-style-type:none;
   float:left;
-  padding:0px 2px;
-  background-color:#FFF100;
-  margin:0 6px 6px 0;
+  margin:0 6px 0px 0;
   font-size:12px;
 }
 
+#tags a.tag-link {
+  padding:0px 2px;
+  background-color:#FFF100;
+  text-decoration:none;
+}
+
+.delete_tag {
+  color:red;
+  text-decoration:none;
+  padding:0 4px 0 1px;
+}
+
+.delete_tag:hover {
+  color:#333;
+}
 
 #whereareyou {
   padding:0 20px 0 20px;
@@ -311,7 +328,7 @@ button, .button {
 
 #add-new {
   width:150px;
-  margin: 35px 15px 0 0;  color:#fff;
+  margin: 35px 0px 0 0;  color:#fff;
   text-decoration:none;
   float:right;
 }

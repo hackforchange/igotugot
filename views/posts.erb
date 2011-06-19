@@ -24,13 +24,13 @@
           <div class="mine"><%=h post.i_got%></div>
           <h5>You Got</h5>  
           <div class="yours"><%=h post.u_got%></div>
-          <h5>Contact</h5>
+          <h5>Get in Touch</h5>
           <div class="contact"><%=h post.contact_method%></div>
           
         <div id="tags">
           <ul>
           <% post.tags.each do |tag| %>
-            <li><a href="/posts/nearby/tagged/<%= tag.name %>"><%= tag.name %></a></li>
+            <li><a href="/posts/nearby/tagged/<%= tag.name %>" class="tag-link"><%= tag.name %></a></li>
           <%end%>
           </ul>
         </div> 
