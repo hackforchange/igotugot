@@ -10,7 +10,7 @@
           <% if post.user == @user %>
             <div class="useritem"></div>
           <% end %>
-         <fb:like href="http://127.0.0.1:9393/post/<%= post.id %>" send="false" layout="button_count" width="450" show_faces="false" font=""></fb:like>
+         <fb:like href="http://<%= request.host_with_port %>/post/<%= post.id %>" send="false" layout="button_count" width="450" show_faces="false" font=""></fb:like>
           <h5>I Got</h5> 
           <div class="mine"><%=h post.i_got%> </div>
           <h5>You Got</h5>  
