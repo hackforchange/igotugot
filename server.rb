@@ -104,6 +104,7 @@ post "/post" do
   @post.i_got = params["i_got"]
   @post.u_got = params["u_got"]
   @post.contact_method = params["contact"]
+  @post.email = params['email']
   @post.lat   = @user.lat
   @post.lng   = @user.lng 
   @post.user = @user if @user

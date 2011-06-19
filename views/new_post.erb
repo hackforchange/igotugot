@@ -23,6 +23,9 @@
       </li>
       <li>
         <label name="email">Email</label>
+        <% p params %>
+        <% p @post %>
+        <% p @user %>
         <input type="text" name="email" id="email" value="<%= params['email'] || @post.email || @user.email %>" placeholder="example@example.com"></input>
         <div class="comment">Don't worry, we won't share your email with anyone. We only need it so you can manage your listing.</div>
       </li>
