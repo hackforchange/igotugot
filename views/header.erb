@@ -21,7 +21,6 @@
 </head> 
  
 <body class="<%= @page %>"> 
-  <div id="sun"></div>
   <div id="whoami">
   <% if  !@user.lat %>
    <form action="/location" method="post">
@@ -35,3 +34,4 @@
     <h4> You are searching inside the zipcode: <b><%=  @user.postal_code %></b></h4>
   <% end %>
   </div>
+  <div id="sun"></div>
