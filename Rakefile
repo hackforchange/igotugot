@@ -15,7 +15,7 @@ namespace :db do
         t.column "id_string", :string    
         t.column "email", :string
         t.column "lat", :float
-        t.column "long", :float
+        t.column "lng", :float
         t.column "postal_code", :string
         t.timestamps 
       end
@@ -52,8 +52,13 @@ namespace :db do
     tags = ['good', 'bad', 'ugly', 'sketchy', 'so good', 'so bad', 'so ugly', 'so sketchy', 'do it motherfucker']
     amounts = ['a handful of', 'a pound of', 'a wheelbarrel of', 'so much', 'so fucking much', 'a bit of', 'hella', 'hecka', 'a shit-tonne of']
     100.times do
-      post = Post.create(:i_got => "#{amounts[rand(amounts.length)]} #{wants[rand(wants.length)]} and A horse named #{haves[rand(haves.length)]}", :u_got => "#{amounts[rand(amounts.length)]} #{wants[rand(wants.length)]}")
+      post = Post.create(
+               :i_got => "#{amounts[rand(amounts.length)]} #{wants[rand(wants.length)]} and A horse named #{haves[rand(haves.length)]}", 
+               :u_got => "#{amounts[rand(amounts.length)]} #{wants[rand(wants.length)]}",
+               :lat => "37.7969962 - (rand() * 5)", 
+               :lng => "-122.405689 - (rand() * 5)")
       rand(4).times { post.tags << Tag.create(:name => tags[rand(tags.length)])}
+      
     end
   end
 end

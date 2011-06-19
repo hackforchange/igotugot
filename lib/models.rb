@@ -8,9 +8,6 @@ ActiveRecord::Base.establish_connection dbconfig['production']
 class User < ActiveRecord::Base
   has_many :tags, :through => :taggings
   has_many :taggings
-  def self.generate_id
-    "user_#{Time.now.to_i}" 
-  end    
 end
 
 require 'digest/sha1'
