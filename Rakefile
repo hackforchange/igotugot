@@ -25,6 +25,7 @@ namespace :db do
         t.column "i_got", :text
         t.column "u_got", :text
         t.column "contact_method", :text
+        t.column "email", :text
         t.column "secret_id", :string
         t.column "lat", :float
         t.column "lng", :float
@@ -113,8 +114,8 @@ namespace :db do
       post = Post.create(
                :i_got => "#{amounts[rand(amounts.length)]} #{wants[rand(wants.length)]} and A horse named #{haves[rand(haves.length)]}", 
                :u_got => "#{amounts[rand(amounts.length)]} #{wants[rand(wants.length)]} ",
-               :lat => "37.7969962 - (rand() * 5)", 
-               :lng => "-122.405689 - (rand() * 5)")
+               :lat => "34.10300320 - (rand() * 5)", 
+               :lng => "-118.41046840 - (rand() * 5)")
       rand(4).times { post.tags << Tag.create(:name => tags[rand(tags.length)])}
       
     end
