@@ -43,10 +43,10 @@ def get_posts(lat, lng, proximity, tags = "")
     where(["lng between ? AND ?", lng - proximity, lng + proximity]).
     where(["lat between ? AND ?", lat - proximity, lat + proximity]).
     order('posts.id DESC')
-    @posts = @posts.where(["tags.name = ?", tags]) if tags != ""
   else
-    @posts = Post.order('id DESC').limit(10)
+    @posts = Post.order('posts.id DESC').limit(10)
   end
+  @posts = @posts.includes('tags').where(["tags.name = ?", tags]) if tags != ""
   
 end
 
@@ -84,7 +84,6 @@ get "/posts/:proximity/tagged/:tags" do
   lng = @user.lng 
   proximity = params[:proximity]
   tags = params[:tags]
-  
   get_posts(lat, lng, proximity, tags)
   erb :posts  
   
@@ -176,5 +175,11 @@ end
 helpers do
   include Rack::Utils
   alias_method :h, :escape_html
+
+
+  def tag_list
+    Tag.list
+  end
+  
 end
 

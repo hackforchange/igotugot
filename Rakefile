@@ -116,7 +116,12 @@ namespace :db do
                :u_got => "#{amounts[rand(amounts.length)]} #{wants[rand(wants.length)]} ",
                :lat => "34.10300320 - (rand() * 5)", 
                :lng => "-118.41046840 - (rand() * 5)")
-      rand(4).times { post.tags << Tag.create(:name => tags[rand(tags.length)])}
+      rand(4).times { 
+        begin 
+          post.tags << Tag.find_or_create_by_name(:name => tags[rand(tags.length)])
+        rescue
+        end   
+          }
       
     end
   end
