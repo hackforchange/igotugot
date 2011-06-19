@@ -31,7 +31,7 @@
           //success
           console.log(data)
           if (data != "") {
-            $('#tags ul').append("<li><a href='/posts/nearby/tagged/"+ data+"'>" + data + "</li>")
+            $('#tags ul').append("<li><a href='/posts/nearby/tagged/"+ data+"' class='tag-link'>" + data + "</li>")
             $("#tag").val('');
           }
         })
