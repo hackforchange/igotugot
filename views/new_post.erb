@@ -23,14 +23,23 @@
       </li>
       <li>
         <label name="email">Email</label>
-        <input type="text" name="email" id="email" value="<%= params['email'] || @user.email %>" placeholder="example@example.com"></input>
+        <input type="text" name="email" id="email" value="<%= params['email'] || @post.email || @user.email %>" placeholder="example@example.com"></input>
         <div class="comment">Don't worry, we won't share your email with anyone. We only need it so you can manage your listing.</div>
       </li>
       <li>
-        <button type='submit'>Add</button>
+        <% if @editing %>
+          <button type='submit'>Update</button>
+          <form action="/post/<%= @post.secret_id %>/delete" method="POST">
+            <button name="delete">delete</button>            
+          </form>
+        <% else %>
+          <button type='submit'>Add</button>
+        <% end %>
       </li>
     </ul>
   </form>  
+  
+  
 </div>
 <script type="text/javascript" charset="utf-8">
   $(function() {
