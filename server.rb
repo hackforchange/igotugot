@@ -57,15 +57,19 @@ post "/location" do
   postal_code = params['postal_code']
   if postal_code    
     location = Location.from_postalcode(postal_code).to_s
+    @user.postal_code = postal_code    
+    puts location
   end
   if params['lat'] && params['lng'] 
     location = {}
     location[:lat] = params['lat']
     location[:lng] = params['lng']        
   end
-  @user.lat = location[:lat]
-  @user.lng = location[:lng] 
+  @user.lat = location[:lat] || location['lat']
+  @user.lng = location[:lng] || location['lng']
   @user.save
+  p @user
+  
   redirect "/posts"
 end
 
@@ -94,21 +98,35 @@ end
 
 
 post "/post" do
+  @page = 'single'
   @post = Post.new()
   @post.i_got = params["i_got"]
   @post.u_got = params["u_got"]
+  @post.contact_method = params["contact"]
   @post.lat   = @user.lat
-  @post.lng   = @user.lng
+  @post.lng   = @user.lng 
+  @post.user = @user if @user
   @post.save  
+  @user.contact_method = @post.contact_method
+  @user.save if @user.changed
+  redirect "/posts"
 end 
 
 get "/post/new" do
+  @post = Post.new
+  @post.contact_method = @user.contact_method
   erb :new_post  
 end 
 
 get "/post/:id" do 
   @post = Post.find(params[:id])
   erb :show_post  
+end 
+
+get "/post/:secret_id/edit" do 
+  @editing = true
+  @post = Post.find_by_secret_id(params[:secret_id])
+  erb :new_post  
 end 
 
 post "/tag/:post_id/as/:tag_name" do

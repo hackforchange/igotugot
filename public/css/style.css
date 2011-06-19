@@ -144,9 +144,15 @@ h6 {
 #main.single-post {
   
 }
+
+body.front #whoami{
+  display: none;
+  
+}
 #whoami {
   padding: 4px;
   background-color: #bada55;
+  text-align: right;
 }
 #whoami h4 {
   display: inline;
