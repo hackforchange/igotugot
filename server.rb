@@ -58,19 +58,20 @@ post "/location" do
   postal_code = postal_code.gsub " ", ""
   postal_code = postal_code.upcase
   if postal_code    
-    p postal_code
-    location = Location.from_postalcode(postal_code).to_s
+    postal_code
     @user.postal_code = postal_code    
-    lat = location['lat']
-    lng = location['lng']
+
+    location = Location.from_postalcode(postal_code)
+    lat = location[:lat]
+    lng = location[:lng]
   end
   if lat && lng
-    @user.lat = lat
-    @user.lng = lng
-    
+    'setting'
+     @user.lat = lat
+     @user.lng = lng    
   end
-  @user.save
-  p @user
+   @user.save!
+   @user
   
   redirect "/posts"
 end

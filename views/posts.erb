@@ -1,7 +1,7 @@
 <%= easy_partial 'header' %>
 
 <%= easy_partial 'subhead' %>
-
+  <div id="search"><input type="text" id="searchbox"></input><div> 
   <div id="main" class="posts">
     <% if @posts.empty? %>
     <div id="sadness">
@@ -40,5 +40,6 @@
       <% end %>
     </ul>
   </div>
+
   
 <%= easy_partial 'footer' %>
