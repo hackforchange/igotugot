@@ -13,7 +13,7 @@
       </li>
       <li>  
         <label name="u_got">You Got</label>
-        <textarea name="u_got" id="ugot"><%= params['u_got'] || @post.i_got %></textarea>
+        <textarea name="u_got" id="ugot"><%= params['u_got'] || @post.u_got %></textarea>
         <div class="comment">Example: If you've got spinach we've got a deal!</div>
       </li>
       <li>  
@@ -29,15 +29,18 @@
       <li>
         <% if @editing %>
           <button type='submit'>Update</button>
-          <form action="/post/<%= @post.secret_id %>/delete" method="POST">
-            <button name="delete">delete</button>            
-          </form>
         <% else %>
           <button type='submit'>Add</button>
         <% end %>
       </li>
     </ul>
   </form>  
+  
+  <% if @editing %>
+    <form action="/post/<%= @post.secret_id %>/delete" method="POST">
+      <button name="delete">delete</button>            
+    </form>
+  <% end %>
   
   
 </div>
