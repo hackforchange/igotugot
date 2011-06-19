@@ -35,7 +35,7 @@ def get_posts(lat, lng, proximity, tags = "")
     when 'close' then
       proximity = 0.5
     else 
-      proximity = 1  
+      proximity = 1
   end  
   if lat && lng
     @posts = Post.
@@ -80,12 +80,12 @@ get "/posts" do
 end
 
 get "/posts/:proximity/tagged/:tags" do
-  lat = @user.lat 
-  lng = @user.lng 
+  lat = @user.lat
+  lng = @user.lng
   proximity = params[:proximity]
   tags = params[:tags]
   get_posts(lat, lng, proximity, tags)
-  erb :posts  
+  erb :posts
   
 end
 get "/posts/:proximity" do
@@ -118,7 +118,7 @@ get "/post/new" do
   @post = Post.new
   @post.contact_method = @user.contact_method
   @post.email          = @user.email
-  erb :new_post  
+  erb :new_post
 end 
 
 get "/post/:id" do 
@@ -129,8 +129,16 @@ end
 get "/post/:secret_id/edit" do 
   @editing = true
   @post = Post.find_by_secret_id(params[:secret_id])
-  erb :new_post  
+  erb :new_post
 end 
+
+get "/post/:secret_id/delete" do 
+  @post = Post.find_by_secret_id(params[:secret_id])
+  @post.destroy
+  erb :new_post
+end 
+
+
 
 post "/tag/:post_id/as/:tag_name" do
  
@@ -151,10 +159,8 @@ post "/tag/:post_id/as/:tag_name" do
 end  
 
 post "/untag/:post_id/as/:tag_name" do
- 
   post = Post.find(params[:post_id])
   tag = Tag.find_by_name(params[:tag_name])
-  
 
   if request.xhr?
   else
