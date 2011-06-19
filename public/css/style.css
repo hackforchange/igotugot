@@ -65,8 +65,8 @@ body, select, input, textarea, button { color: #333; font-family: 'Droid Sans', 
 input, textarea { border:1px solid #ccc; padding:6px; }
 h1, h2, h3, h4, h5, h6 { font-weight: bold; line-height:1.2em; }
 
-a, a:active, a:visited { color: #607890; }
-a:hover { color: #036; }
+a, a:active, a:visited { color: #8BC53F; cursor:pointer; }
+a:hover { color: #333; }
 
 
 /*MAIN STUFF*/
@@ -141,6 +141,10 @@ h6 {
           box-shadow: 0 0 0 transparent;
 }
 
+#main.single-post {
+  
+}
+
 #post div#tags ul li{
   display: inline;
   
@@ -155,22 +159,48 @@ h6 {
 }
 
 .post {
-  width:268px;
-  height:150px;
+  width:310px;
   float:left;
-  padding:20px;
   margin:0 10px 10px 0;
   background:#fff;
 }
 
-.mine {
+.post a {
+  color:#333;
+  height:250px;
+  display:block;
+  padding:20px;
+  text-decoration:none;
+  border:4px solid #fff;
+}
+
+.post a:hover {
+  border:4px solid #333;
+}
+
+.mine, .yours {
   padding:0 0 10px 0;
   margin:0 0 10px 0;
   border-bottom:1px dashed #ccc;
 }
 
-#branding, #whereareyou {
-  padding:20px;
+#tags ul {
+  margin:10px 0 0 0;
+  overflow:hidden;
+}
+
+#tags ul li {
+  list-style-type:none;
+  float:left;
+  padding:0px 2px;
+  background-color:#FFF100;
+  margin:0 6px 6px 0;
+  font-size:12px;
+}
+
+
+#whereareyou {
+  padding:0 20px 0 20px;
 }
 
 #branding {
@@ -183,6 +213,7 @@ h6 {
 
 #branding h4 {
   font-weight:normal;
+  margin:10px 0 0 0;
 }
 
 button, .button {
@@ -202,7 +233,7 @@ button, .button {
 }
 
 #whereareyou button {
-  margin:12px 0 0 0;
+  margin:12px 0 12px 0;
   display:block;
 }
 
@@ -219,15 +250,16 @@ button, .button {
 
 #wordmark {
   float:left;
-  width:109px;
+  width:300px;
+  color:#555;
+  text-decoration:none;
 }
 
 #add-new {
   width:150px;
-  margin:50px 15px 20px 400px;
-  color:#fff;
+  margin: 35px 15px 0 0;  color:#fff;
   text-decoration:none;
-  float:left;
+  float:right;
 }
 #add-new:hover {
   background-color:#333;
@@ -256,7 +288,7 @@ button, .button {
   color:#555;
   float:left;
   margin:0 0 0 24px;
-  width:150px;
+  width:200px;
 }
 
 #new-post ul {

@@ -6,21 +6,19 @@
     <ul>
       <% @posts.each do |post| %> 
        <li class="post">
-        <h3>I got:</h3> 
-        <div class="mine"><%=  post.i_got%> </div>
-        <h3>U got:</h3>  
-        <div class="yours"><%=  post.u_got%> </div>
-        <a href="/post/<%= post.id %>">more</a>
-        <div id="tags">
-          <h4>Tags:</h4>
-          <ul>
-          <% post.tags.each do |tag| %>
-            <li><%= tag.name %> |x|</li>
-          <%end%>
-
-          </ul>
-        </div> 
-
+        <a href="/post/<%= post.id %>">
+          <h5>I Got</h5> 
+          <div class="mine"><%=  post.i_got%> </div>
+          <h5>You Got</h5>  
+          <div class="yours"><%=  post.u_got%> </div>
+          <div id="tags">
+            <ul>
+            <% post.tags.each do |tag| %>
+              <li><%= tag.name %></li>
+            <%end%>
+            </ul>
+          </div> 
+        </a>
        </li>
       <% end %>  
     </ul>
