@@ -1,14 +1,17 @@
 <%= easy_partial 'header' %>
-
+  
   <div id="main" class="posts">
-    <a href="/posts/new">new</a>
-    <% @posts.each do |post| %> 
-     <div class="post">
-      <h3>I got:</h3> 
-      <div class="mine"><%=  post.i_got%> </div>
-      <h3>U got:</h3>  
-      <div class="yours"><%=  post.u_got%> </div>
-     </div>
-    <% end %>  </div>
+    <a href="/posts/new" id="add-new" class="button">add new listing</a>
+    <ul>
+      <% @posts.each do |post| %> 
+       <li class="post">
+        <h3>I got:</h3> 
+        <div class="mine"><%=  post.i_got%> </div>
+        <h3>U got:</h3>  
+        <div class="yours"><%=  post.u_got%> </div>
+       </li>
+      <% end %>  
+    </ul>
+  </div>
   
 <%= easy_partial 'footer' %>

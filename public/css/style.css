@@ -64,6 +64,7 @@ button {  width: auto; overflow: visible; }
 body, select, input, textarea, button { color: #333; font-family: 'Droid Sans', arial, serif; }
 input, textarea { border:1px solid #ccc; padding:6px; }
 h1, h2, h3, h4, h5, h6 { font-weight: bold; line-height:1.2em; }
+
 a, a:active, a:visited { color: #607890; }
 a:hover { color: #036; }
 
@@ -104,32 +105,61 @@ h6 {
 #main {
   width:960px;
   overflow:hidden;
-  margin:100px auto 0 auto;
+  margin:-200px auto 100px auto;
   padding:40px;
   background:#fff;
-  -webkit-border-radius: 10px;
-     -moz-border-radius: 10px;
-          border-radius: 10px;
-  -webkit-box-shadow: 0 0 5px #fff;
-     -moz-box-shadow: 0 0 5px #fff;
-       -o-box-shadow: 0 0 5px #fff;
-          box-shadow: 0 0 5px #fff;
+  -webkit-box-shadow: 0 0 10px #666;
+       -moz-box-shadow: 0 0 10px #666;
+         -o-box-shadow: 0 0 10px #666;
+            box-shadow: 0 0 10px #666;
 }
 
 #sun {
   height:285px;
-  width:285px;
   background: url('/img/sun.png') no-repeat top right;
-  z-index:1;
+/*  z-index:1;
   position:relative;
-  float:right;
-  margin:-100px 0 0 0;
-}
+  //float:right;
+*/}
 
 #main.landing {
   width:550px;
+  margin:-100px auto 0 auto;
 }
 
+#main.posts {
+  background:transparent;
+  padding:0;
+  -webkit-box-shadow: 0 0 0 transparent;
+     -moz-box-shadow: 0 0 0 transparent;
+       -o-box-shadow: 0 0 0 transparent;
+          box-shadow: 0 0 0 transparent;
+}
+
+.posts ul {
+  margin:0;
+  clear:both;
+  overflow:hidden;
+}
+
+.posts ul li {
+  list-style-type:none;
+}
+
+.post {
+  width:268px;
+  height:150px;
+  float:left;
+  padding:20px;
+  margin:0 10px 10px 0;
+  background:#fff;
+}
+
+.mine {
+  padding:0 0 10px 0;
+  margin:0 0 10px 0;
+  border-bottom:1px solid #ccc;
+}
 
 #branding, #whereareyou {
   padding:20px;
@@ -173,10 +203,24 @@ button, .button {
   float:left;
 }
 
+#add-new {
+  display:block;
+  width:150px;
+  margin:0 0 20px 0;
+  color:#fff;
+  text-decoration:none;
+  float:right;
+  clear:both;
+}
+#add-new:hover {
+  background-color:#333;
+}
+
+
 #footer {
   height:100px;
   width:100%;
-  position:absolute;
+  position:fixed;
   bottom:0;
   background: url('/img/grass.png') repeat-x center bottom;
 }
