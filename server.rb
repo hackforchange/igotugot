@@ -132,10 +132,11 @@ get "/post/:secret_id/edit" do
   erb :new_post
 end 
 
-get "/post/:secret_id/delete" do 
+post "/post/:secret_id/delete" do 
   @post = Post.find_by_secret_id(params[:secret_id])
   @post.destroy
   erb :new_post
+  redirect "/posts"
 end 
 
 
