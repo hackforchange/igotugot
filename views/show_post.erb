@@ -8,8 +8,9 @@
         <% @post.tags.each do |tag| %>
           <li><%= tag.name %></li>
         <%end%>
-          <li><form id="new_tag"><input type="text" id='tag'></input></form></li>
+
         </ul>
+        <form id="new_tag"><input type="text" id='tag'></input></form>
       </div> 
       <h3>I got:</h3> 
       <div class="mine"><%=  @post.i_got%> </div>
@@ -23,14 +24,13 @@
     $(function() {
       $("#new_tag").submit(function(e){
         var tag  = $("#tag").val();        
-        console.log(tag);
-        $.post("tag/<%= @post.id %>/as/"+ tag, 
+        $.post("/tag/<%= @post.id %>/as/"+ tag, 
         function(data){
           //success
-          consol.log('success')
-        }, function(data){
-          //failure?
-          console.log('fail') 
+          console.log(data)
+          if (data != "") {
+            $('#tags ul').append("<li>"+ data+"</li>")
+          }
         })
         e.preventDefault()
         return false;
