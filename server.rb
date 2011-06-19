@@ -1,6 +1,6 @@
 require 'rubygems'
 require 'sinatra'
-require 'lib/models'
+require './lib/models'
 require 'yaml'
 enable :sessions
   
@@ -16,7 +16,6 @@ before do
       session['identity'] = @user.id
     end
 end
-
 
 get '/' do  
   @page = "front"
@@ -45,7 +44,6 @@ def get_posts(lat, lng, proximity, tags = "")
     where(["lat between ? AND ?", lat - proximity, lat + proximity]).
     order('posts.id DESC')
     @posts = @posts.where(["tags.name = ?", tags]) if tags != ""
-    #.where(["lat between ? AND ?", lat - 1, lat + 1])
   else
     @posts = Post.order('id DESC').limit(10)
   end
@@ -108,6 +106,7 @@ post "/post" do
   @post.user = @user if @user
   @post.save  
   @user.contact_method = @post.contact_method
+  @user.email = @post.email
   @user.save if @user.changed
   redirect "/posts"
 end 
@@ -115,6 +114,7 @@ end
 get "/post/new" do
   @post = Post.new
   @post.contact_method = @user.contact_method
+  @post.email          = @user.email
   erb :new_post  
 end 
 
