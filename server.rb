@@ -53,19 +53,20 @@ end
 post "/location" do
   puts params
   postal_code = params['postal_code']
-  postal_code.gsub! /' '/, ""
-  postal_code.upcase!
+  lat         = params['lat']
+  lng         = params['lng']
+  postal_code = postal_code.gsub " ", ""
+  postal_code = postal_code.upcase
   if postal_code    
+    p postal_code
     location = Location.from_postalcode(postal_code).to_s
     @user.postal_code = postal_code    
-    puts location
+    lat = location['lat']
+    lng = location['lng']
   end
-  if params['lat'] && params['lng'] 
-    location = {}
-    location[:lat] = params['lat']
-    location[:lng] = params['lng']        
-    @user.lat = location[:lat] || location['lat']
-    @user.lng = location[:lng] || location['lng']
+  if lat && lng
+    @user.lat = lat
+    @user.lng = lng
     
   end
   @user.save
