@@ -22,7 +22,7 @@
     });
     
   	</script>
-  	
+  	<% if @post %>    
   	<meta property="og:title" content="I Got. You Got."/>
     <meta property="og:type" content="article"/>
     <meta property="og:url" content="http://<%= request.host_with_port %>/post/<%= @post.id %>"/>
@@ -30,6 +30,7 @@
     <meta property="og:site_name" content="I Got. You Got."/>
     <meta property="fb:admins" content="676856302"/>
     <meta property="og:description" content="Backyard Food Garden Exchange. Let's Share!!"/>
+    <% end %>
 
 </head> 
  

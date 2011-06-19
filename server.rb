@@ -104,6 +104,7 @@ post "/post" do
   @post.i_got = params["i_got"]
   @post.u_got = params["u_got"]
   @post.contact_method = params["contact"]
+  @post.email = params['email']
   @post.lat   = @user.lat
   @post.lng   = @user.lng 
   @post.user = @user if @user
@@ -111,13 +112,23 @@ post "/post" do
   @user.contact_method = @post.contact_method
   @user.email = @post.email
   @user.save if @user.changed
+  
+  if params["tags"]
+    tags = params['tags'].split(",")
+
+    tags.each {|tag| 
+      @post.tags << Tag.find_or_create_by_name( h tag)  
+    }
+  end
+
+
   redirect "/posts"
 end 
 
 get "/post/new" do
   @post = Post.new
-  @post.contact_method = @user.contact_method
-  @post.email          = @user.email
+  @post.contact_method = @user.contact_method if @user.contact_method
+  @post.email          = @user.email if @user.email
   erb :new_post
 end 
 
