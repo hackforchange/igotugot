@@ -55,10 +55,21 @@ get "/post/:id" do
 end 
 
 post "/tag/:post_id/as/:tag_name" do
+ 
   post = Post.find(params[:post_id])
   tag = Tag.find_or_create_by_name(params[:tag_name])
-  post.tags << tag
-  redirect "/posts/#{post.id}"
+  begin
+    # will die if not globally unique
+    post.tags << tag
+  rescue
+    # so we return a blank
+    tag.name = nil
+  end
+  if request.xhr?
+    tag.name
+  else
+    redirect "/posts/#{post.id}"
+  end
 end  
 
 get "/sessions/clear" do
