@@ -1,7 +1,7 @@
 <%= easy_partial 'header' %>
 
 <%= easy_partial 'subhead' %>
-  <!--<div id="search"><input type="text" id="searchbox"></input><div> -->
+  <div id="search"><input type="text" id="searchbox"></input><input type="button" id="clearbox"></input><div>
   <div id="main" class="posts">
     <% if @posts.empty? %>
     <div id="sadness">
@@ -42,15 +42,28 @@
   </div>
 
 <script>
- 
- // var post_text = $('.posts li')
- // $('.posts li').hide()
- // post_text.each(function(number, item){   
- //    if (item.textContent.match('pound') != null){       
- //      var my_item = $(item);       
- //      my_item.show() 
- //    } else { 
- //    } 
- // })
+ $(function() {
+  $('#searchbox').keyup(function(e){
+    console.log(e.target)
+    var txt = $(e.target).val()
+    text_search(txt);    
+  })
+ });
+
+ var post_text = $('.posts li')
+ function text_search(term){
+  if (term == "") {
+    $('.posts li').show()
+    return        
+  }
+  $('.posts li').hide()    
+  post_text.each(function(number, item){   
+     if (item.textContent.match(term) != null){       
+       var my_item = $(item);       
+       my_item.show() 
+     } else { 
+     } 
+  })
+ }
 </script>  
 <%= easy_partial 'footer' %>
