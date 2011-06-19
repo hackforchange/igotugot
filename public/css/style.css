@@ -153,13 +153,18 @@ body.front #whoami{
   padding: 6px;
   background-color: #bada55;
   text-align: right;
-  color:#fff;
+  color:#555;
 }
 #whoami h4 {
   display: inline;
   font-size: 14px;
-  
 }
+
+#whoami #change-location {
+  color:#fff;
+  font-size:10px;
+}
+
 #whoami input , #whoami button, #whoami a{
   display: inline;
   font-size: 14px;
