@@ -98,6 +98,7 @@ end
 
 
 post "/post" do
+  @page = 'single'
   @post = Post.new()
   @post.i_got = params["i_got"]
   @post.u_got = params["u_got"]
@@ -112,6 +113,8 @@ post "/post" do
 end 
 
 get "/post/new" do
+  @post = Post.new
+  @post.contact_method = @user.contact_method
   erb :new_post  
 end 
 
