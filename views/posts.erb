@@ -3,6 +3,7 @@
 <%= easy_partial 'subhead' %>
 
   <div id="main" class="posts">
+    <a href="/post/new" id="add-new" class="button">add new listing</a>
     <ul>
       <% @posts.each do |post| %> 
        <li class="post">
@@ -10,6 +11,7 @@
         <div class="mine"><%=  post.i_got%> </div>
         <h3>U got:</h3>  
         <div class="yours"><%=  post.u_got%> </div>
+        <a href="/post/<%= post.id %>">more</a>
        </li>
       <% end %>  
     </ul>

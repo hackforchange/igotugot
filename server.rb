@@ -45,11 +45,11 @@ post "/post" do
   
 end 
 
-get "/posts/new" do
+get "/post/new" do
   erb :new_post  
 end 
 
-get "/posts/:id" do 
+get "/post/:id" do 
   @post = Post.find(params[:id])
   erb :show_post  
 end 
