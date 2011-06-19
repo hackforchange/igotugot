@@ -3,10 +3,17 @@ function get_location() {
 }
 
 function set_location(position) {
+  console.log([position])
+   
   var lat = position.coords.latitude;
   var lng = position.coords.longitude;
-  console.log([lat, lng])
   $.post("/location", {lat: lat, lng: lng}, function(){
-    window.location = "/posts"
+     if (window.location.pathname == '/') {
+        window.location = "/posts" 
+        
+      } else {
+         window.location = window.location
+      }
+     
   })
 }

@@ -4,9 +4,22 @@ require 'lib/models'
 require 'yaml'
 enable :sessions
   
-get '/' do
-  session[:identity] ||= User.generate_id
-  @user_id = session[:identity]
+before do  
+    if session['identity'] 
+      begin
+      @user = User.find(session['identity'])
+      rescue
+       @user = User.create
+      end
+    else
+      @user = User.create
+      session['identity'] = @user.id
+    end
+end
+
+
+get '/' do  
+  @page = "front"
   erb :index
 end
 
@@ -25,15 +38,40 @@ post "/location" do
     location[:lat] = params['lat']
     location[:lng] = params['lng']        
   end
-  session[:lat] = location[:lat]
-  session[:lng] = location[:lng] 
+  @user.lat = location[:lat]
+  @user.lng = location[:lng] 
+  @user.save
   redirect "/posts"
 end
 
 get "/posts" do
-  @posts = Post.all
+  redirect "/posts/nearby"
+end
+get "/posts/:proximity" do
+  lat = @user.lat 
+  lng = @user.lng 
+  case params[:proximity]
+    when 'not_so_close' then
+      proximity = 1.5
+    when 'nearby' then
+      proximity = 1
+    when 'close' then
+      proximity = 0.5
+    else 
+      proximity = 1  
+  end  
+  if lat && lng
+    @posts = Post.
+    where(["lng between ? AND ?", lng - proximity, lng + proximity]).
+    where(["lat between ? AND ?", lat - proximity, lat + proximity]).
+    order('id DESC')
+    #.where(["lat between ? AND ?", lat - 1, lat + 1])
+  else
+    @posts = Post.order('id DESC').limit(10)
+  end
   erb :posts  
 end 
+
 
 post "/post" do
   @post = Post.new()
@@ -85,7 +123,7 @@ end
 
 
 get "/sessions/clear" do
-  session = {}
+  session.clear
   session.to_yaml
 end  
 
