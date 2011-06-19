@@ -5,14 +5,31 @@
 <div id="main" class="new-post">
 
   <form action="/post" method="post" id="new-post">
-    <label name="i_got">I got</label>
-    <textarea name="i_got"><%= params['i_got']%></textarea>
-    <label name="email">my email <span class="comment"> we only use this to send you the edit url for this post.</span></label>
-    <input type="text" name="email" value="<%= params['email']%>"></input>
-    
-    <label name="u_got">U got</label>
-    <textarea name="u_got"><%= params['u_got']%></textarea>
-    <input type='submit'></input>
+    <ul>
+      <li>
+        <label name="i_got">I Got</label>
+        <textarea name="i_got"><%= params['i_got']%></textarea>
+        <div class="comment">Example: I've got more tomatoes and rhubarb than I can eat.</div>
+      </li>
+      <li>  
+        <label name="u_got">You Got</label>
+        <textarea name="u_got"><%= params['u_got']%></textarea>
+        <div class="comment">Example: If you've got spinach we've got a deal!</div>
+      </li>
+      <li>  
+        <label name="u_got">How do you want people to contact you?</label>
+        <textarea name="contact"><%= params['contact']%></textarea>
+        <div class="comment">Example: Please email me at boom@example.com or give me a call at work: 555-555-5555.</div>
+      </li>
+      <li>
+        <label name="email">my email</label>
+        <input type="text" name="email" value="<%= params['email']%>"></input>
+        <div class="comment"> We only use this to send you the edit url for this post.</div>
+      </li>
+      <li>
+        <button type='submit'>Add</button>
+      </li>
+    </ul>
   </form>  
 </div>
 

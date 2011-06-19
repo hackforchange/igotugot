@@ -1,7 +1,6 @@
 
 <%= easy_partial 'header' %>
-  <div id="main" class="posts">
-    <a href="/posts/new">new</a>
+  <div id="main" class="single-post">
      <div class="post">
       <div id="tags">
         <ul>
@@ -11,9 +10,9 @@
           <li><form id="new_tag"><input type="text" id='tag'></input></form></li>
         </ul>
       </div> 
-      <h3>I got:</h3> 
+      <h3>I Got</h3> 
       <div class="mine"><%=  @post.i_got%> </div>
-      <h3>U got:</h3>  
+      <h3>You Got</h3>  
       <div class="yours"><%=  @post.u_got%> </div>
      </div>
 
