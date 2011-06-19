@@ -189,22 +189,24 @@ body.front #whoami{
   float:left;
   margin:0 10px 10px 0;
   background:#fff;
-  height:250px;
+  height:275px;
   display:block;
   padding:20px;
   overflow:hidden;
+  position:relative;
   
 }
 
 a.post-link {
-  float:right;
   text-decoration:none;
   width:18px;
   height:20px;
   padding:6px;
   background:#333;
   color:#fff;
-  margin: 0 -20px 0 0;
+  position:absolute;
+  bottom:0;
+  right:0;
 }
 
 a.post-link:hover {
