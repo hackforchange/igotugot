@@ -38,7 +38,7 @@ namespace :db do
         t.timestamps 
       end
       create_table "taggings", :force => true do |t|    
-        t.column "tag_id", :string
+        t.column "tag_id", :integer
         t.column "post_id", :integer
         t.column "user_id", :integer
         t.timestamps 
