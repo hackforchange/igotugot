@@ -1,7 +1,7 @@
 <%= easy_partial 'header' %>
 
 <%= easy_partial 'subhead' %>
-  <div id="search"><input type="text" id="searchbox"></input><div> 
+  <!--<div id="search"><input type="text" id="searchbox"></input><div> -->
   <div id="main" class="posts">
     <% if @posts.empty? %>
     <div id="sadness">
@@ -41,5 +41,16 @@
     </ul>
   </div>
 
-  
+<script>
+ 
+ // var post_text = $('.posts li')
+ // $('.posts li').hide()
+ // post_text.each(function(number, item){   
+ //    if (item.textContent.match('pound') != null){       
+ //      var my_item = $(item);       
+ //      my_item.show() 
+ //    } else { 
+ //    } 
+ // })
+</script>  
 <%= easy_partial 'footer' %>
