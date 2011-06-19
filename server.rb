@@ -27,6 +27,31 @@ def easy_partial template
   erb template.to_sym, :layout => false
 end
 
+def get_posts(lat, lng, proximity, tags = "")
+  case params[:proximity]
+    when 'not_so_close' then
+      proximity = 1.5
+    when 'nearby' then
+      proximity = 1
+    when 'close' then
+      proximity = 0.5
+    else 
+      proximity = 1  
+  end  
+  if lat && lng
+    @posts = Post.
+    includes('tags').
+    where(["lng between ? AND ?", lng - proximity, lng + proximity]).
+    where(["lat between ? AND ?", lat - proximity, lat + proximity]).
+    order('posts.id DESC')
+    @posts = @posts.where("tags.name = 'good'") if tags != ""
+    #.where(["lat between ? AND ?", lat - 1, lat + 1])
+  else
+    @posts = Post.order('id DESC').limit(10)
+  end
+  
+end
+
 post "/location" do
   puts params
   postal_code = params['postal_code']
@@ -47,28 +72,23 @@ end
 get "/posts" do
   redirect "/posts/nearby"
 end
+
+get "/posts/:proximity/tagged/:tags" do
+  lat = @user.lat 
+  lng = @user.lng 
+  proximity = params[:proximity]
+  tags = params[:tags]
+  
+  get_posts(lat, lng, proximity, tags)
+  erb :posts  
+  
+end
 get "/posts/:proximity" do
   lat = @user.lat 
   lng = @user.lng 
-  case params[:proximity]
-    when 'not_so_close' then
-      proximity = 1.5
-    when 'nearby' then
-      proximity = 1
-    when 'close' then
-      proximity = 0.5
-    else 
-      proximity = 1  
-  end  
-  if lat && lng
-    @posts = Post.
-    where(["lng between ? AND ?", lng - proximity, lng + proximity]).
-    where(["lat between ? AND ?", lat - proximity, lat + proximity]).
-    order('id DESC')
-    #.where(["lat between ? AND ?", lat - 1, lat + 1])
-  else
-    @posts = Post.order('id DESC').limit(10)
-  end
+  proximity = params[:proximity]
+  
+  get_posts(lat, lng, proximity)
   erb :posts  
 end 
 
@@ -77,8 +97,8 @@ post "/post" do
   @post = Post.new()
   @post.i_got = params["i_got"]
   @post.u_got = params["u_got"]
-  @post.lat   = session['lat']
-  @post.lng   = session['lng']
+  @post.lat   = @user.lat
+  @post.lng   = @user.lng
   @post.save  
 end 
 
