@@ -61,9 +61,9 @@ a:link { -webkit-tap-highlight-color: #FF5E99; }
 button {  width: auto; overflow: visible; }
 .ie7 img { -ms-interpolation-mode: bicubic; }
 
-body, select, input, textarea, button { color: #444; font-family: 'Droid Sans', arial, serif; }
-input, textarea { border:1px solid #ccc; }
-h1, h2, h3, h4, h5, h6 { font-weight: bold; }
+body, select, input, textarea, button { color: #333; font-family: 'Droid Sans', arial, serif; }
+input, textarea { border:1px solid #ccc; padding:6px; }
+h1, h2, h3, h4, h5, h6 { font-weight: bold; line-height:1.2em; }
 a, a:active, a:visited { color: #607890; }
 a:hover { color: #036; }
 
@@ -72,64 +72,62 @@ a:hover { color: #036; }
 
 body {
   font-size:16px;
-  line-height:1.1em;
+  line-height:1.3em;
   background: url('/img/bg-tile.png');
-  
+  min-height:500px;
 }
 
 h1 {
   font-size:36px;
-  line-height:1.1em;
 }
 
 h2 {
   font-size:32px;
-  line-height:1.1em;
 }
 
 h3 {
   font-size:28px;
-  line-height:1.1em;
 }
 
 h4 {
   font-size:20px;
-  line-height:1.1em;
 }
 
 h5 {
   font-size:16px;
-  line-height:1.1em;
 }
 
 h6 {
   font-size:10px;
-  line-height:1.1em;
 }
 
 #main {
   width:960px;
   overflow:hidden;
-  margin:0 auto;
-}
-
-#header {
-  height:285px;
-  background: url('/img/sun.png') no-repeat top right;
-}
-
-#main.landing {
-  width:500px;
+  margin:100px auto 0 auto;
   padding:40px;
   background:#fff;
   -webkit-border-radius: 10px;
      -moz-border-radius: 10px;
           border-radius: 10px;
-  -webkit-box-shadow: 0 0 10px #ddd;
-     -moz-box-shadow: 0 0 10px #ddd;
-       -o-box-shadow: 0 0 10px #ddd;
-          box-shadow: 0 0 10px #ddd;
-  margin:-50px auto 0 auto;
+  -webkit-box-shadow: 0 0 5px #fff;
+     -moz-box-shadow: 0 0 5px #fff;
+       -o-box-shadow: 0 0 5px #fff;
+          box-shadow: 0 0 5px #fff;
+}
+
+#sun {
+  height:285px;
+  width:285px;
+  background: url('/img/sun.png') no-repeat top right;
+  z-index:1;
+  position:relative;
+  float:right;
+  margin:-100px 0 0 0;
+}
+
+#main.landing {
+  width:550px;
 }
 
 
@@ -138,17 +136,40 @@ h6 {
 }
 
 #branding {
-  width:200px;
+  width:180px;
   float:left;
   border-right:1px solid #ccc;
+  background: url('/img/carrot.png') no-repeat;
+  padding:0 20px 0 80px;
 }
 
-#branding h5 {
+#branding h4 {
   font-weight:normal;
 }
 
+button, .button {
+  background:#8BC53F;
+  padding:6px;
+  -webkit-border-radius: 6px;
+     -moz-border-radius: 6px;
+          border-radius: 6px;
+  -webkit-box-shadow: 0 0 5px #ddd;
+     -moz-box-shadow: 0 0 5px #ddd;
+       -o-box-shadow: 0 0 5px #ddd;
+          box-shadow: 0 0 5px #ddd;
+  border:0px;
+  color:#fff;
+  font-size:20px;
+  font-weight:bold;
+}
+
+#whereareyou button {
+  margin:12px 0 0 0;
+  display:block;
+}
+
 #whereareyou {
-  width:200px;
+  width:220px;
   float:left;
 }
 
@@ -159,6 +180,7 @@ h6 {
   bottom:0;
   background: url('/img/grass.png') repeat-x center bottom;
 }
+
 
 
 

@@ -1,50 +1,7 @@
-<!doctype html>
-<!--[if lt IE 7 ]> <html class="no-js ie6" lang="en"> <![endif]-->
-<!--[if IE 7 ]>    <html class="no-js ie7" lang="en"> <![endif]-->
-<!--[if IE 8 ]>    <html class="no-js ie8" lang="en"> <![endif]-->
-<!--[if (gte IE 9)|!(IE)]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <meta name="viewport" content="width=device-width,maximum-scale=1.0" />
-    <title>igotugot</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js" type="text/javascript" charset="utf-8"></script>
-    <link href='http://fonts.googleapis.com/css?family=Mako&v1' rel='stylesheet' type='text/css'>
-  	<link rel="stylesheet" href="/css/style.css" type="text/css" media="screen" />    
-  	<script src="/js/app.js"></script>
-    <script>
-      $(function() {
-      });
-    </script>
-    <style>
-     body {
-       background-color: cornflowerblue;
-     }
-     header {
-       background-color: #ccc;       
-       margin-bottom: 20px;
-     }
-     form {
-       margin: 10px;
-       padding: 10px;
-       }
-     label {
-       display: block;
-     }
-     footer {
-       width: 100%;
-       margin-top: 20px;
-       background-color: #ccc;       
-     }
+<%= easy_partial 'header' %>
 
-    </style>
-    
-</head> 
- 
-<body> 
-  <header>
-    Great Headery
-  </header>
+<div id="main" class="new-post">
+
   <form>
     <label name="i_got">I got</label>
     <textarea name="i_got"></textarea>
@@ -54,9 +11,6 @@
     <label name="u_got">U got</label>
     <textarea name="u_got"></textarea>
   </form>  
-  <footer>
-    Much footery
-  </footer>    
+</div>
 
-</body> 
-</html>
+<%= easy_partial 'footer' %>

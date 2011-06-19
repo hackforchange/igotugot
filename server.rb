@@ -10,6 +10,10 @@ get '/' do
   erb :index
 end
 
+def easy_partial template
+  erb template.to_sym, :layout => false
+end
+
 post "/location" do
   puts params
   postal_code = params['postal_code']
