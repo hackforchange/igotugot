@@ -150,9 +150,10 @@ body.front #whoami{
   
 }
 #whoami {
-  padding: 4px;
+  padding: 6px;
   background-color: #bada55;
   text-align: right;
+  color:#fff;
 }
 #whoami h4 {
   display: inline;
@@ -163,6 +164,10 @@ body.front #whoami{
   display: inline;
   font-size: 14px;
   padding: 2px;  
+}
+
+#whoami input {
+  width:55px;
 }
 
 #post div#tags ul li{
@@ -185,7 +190,7 @@ body.front #whoami{
   background:#fff;
 }
 
-.post a {
+a.post-link {
   color:#333;
   height:250px;
   display:block;
@@ -195,8 +200,19 @@ body.front #whoami{
   overflow:hidden;
 }
 
-.post a:hover {
+a.post-link:hover {
   border:4px solid #333;
+}
+
+.useritem {
+  width:10px;
+  height:10px;
+  float:right;
+  margin:-10px -10px 0 0;
+  -webkit-border-radius: 20px;
+     -moz-border-radius: 20px;
+          border-radius: 20px;
+  background-color: #bada55;
 }
 
 .mine, .yours {
@@ -238,7 +254,7 @@ body.front #whoami{
 }
 
 button, .button {
-  background:#8BC53F;
+  background:#bada55;
   padding:6px;
   -webkit-border-radius: 6px;
      -moz-border-radius: 6px;
@@ -330,6 +346,9 @@ button, .button {
   background: url('/img/grass.png') repeat-x center bottom;
 }
 
+.error {
+  color:red;
+}
 
 
 

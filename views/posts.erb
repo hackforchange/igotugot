@@ -6,7 +6,10 @@
     <ul>
       <% @posts.each do |post| %> 
        <li class="post">
-        <a href="/post/<%= post.id %>">
+        <a href="/post/<%= post.id %>" class="post-link">
+          <% if post.user == @user %>
+            <div class="useritem"></div>
+          <% end %>
          <fb:like href="http://127.0.0.1:9393/post/<%= post.id %>" send="false" layout="button_count" width="450" show_faces="false" font=""></fb:like>
           <h5>I Got</h5> 
           <div class="mine"><%=h post.i_got%> </div>
@@ -19,9 +22,6 @@
             <%end%>
             </ul>
           </div> 
-          <% if post.user == @user %>
-           <a href="/post/<%= post.secret_id %>/edit"> edit </a>
-          <% end %>
 
         </a>
        </li>

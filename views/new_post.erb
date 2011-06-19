@@ -18,12 +18,12 @@
       </li>
       <li>  
         <label name="contact">How do you want people to contact you?</label>
-        <textarea name="contact"><%= params['contact'] || @post.contact_method %></textarea>
+        <textarea name="contact" id="contact"><%= params['contact'] || @post.contact_method %></textarea>
         <div class="comment">Example: Please email me at boom@example.com or give me a call at work: 555-555-5555.</div>
       </li>
       <li>
         <label name="email">Email</label>
-        <input type="text" name="email" value="<%= params['email'] || @user.email %>" placeholder="example@example.com"></input>
+        <input type="text" name="email" id="email" value="<%= params['email'] || @user.email %>" placeholder="example@example.com"></input>
         <div class="comment">Don't worry, we won't share your email with anyone. We only need it so you can manage your listing.</div>
       </li>
       <li>
@@ -32,5 +32,20 @@
     </ul>
   </form>  
 </div>
+<script type="text/javascript" charset="utf-8">
+  $(function() {
+    // $("#new-post").validate({
+    //       rules: {
+    //         email: {
+    //           required: true,
+    //           email: true
+    //         },
+    //         contact: {
+    //           required: true
+    //         }
+    //       }
+    //     });
+  });
+</script>
 
 <%= easy_partial 'footer' %>
