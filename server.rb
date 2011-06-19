@@ -49,6 +49,18 @@ get "/posts/new" do
   erb :new_post  
 end 
 
+get "/posts/:id" do 
+  @post = Post.find(params[:id])
+  erb :show_post  
+end 
+
+post "/tag/:post_id/as/:tag_name" do
+  post = Post.find(params[:post_id])
+  tag = Tag.find_or_create_by_name(params[:tag_name])
+  post.tags << tag
+  redirect "/posts/#{post.id}"
+end  
+
 get "/sessions/clear" do
   session = {}
   session.to_yaml
@@ -57,3 +69,5 @@ end
 get "/sessions/show" do
   session.to_yaml
 end  
+
+

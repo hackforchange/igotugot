@@ -1,0 +1,41 @@
+
+<%= easy_partial 'header' %>
+  <div id="main" class="posts">
+    <a href="/posts/new">new</a>
+     <div class="post">
+      <div id="tags">
+        <ul>
+        <% @post.tags.each do |tag| %>
+          <li><%= tag.name %></li>
+        <%end%>
+          <li><form id="new_tag"><input type="text" id='tag'></input></form></li>
+        </ul>
+      </div> 
+      <h3>I got:</h3> 
+      <div class="mine"><%=  @post.i_got%> </div>
+      <h3>U got:</h3>  
+      <div class="yours"><%=  @post.u_got%> </div>
+     </div>
+
+  </div>
+
+  <script>
+    $(function() {
+      $("#new_tag").submit(function(e){
+        var tag  = $("#tag").val();        
+        console.log(tag);
+        $.post("tag/<%= @post.id %>/as/"+ tag, 
+        function(data){
+          //success
+          consol.log('success')
+        }, function(data){
+          //failure?
+          console.log('fail') 
+        })
+        e.preventDefault()
+        return false;
+      });
+    });
+  </script>
+  
+<%= easy_partial 'footer' %>
