@@ -14,24 +14,27 @@
   	<script src="/js/app.js"></script>
   	<script>
   	$(function() {
-      $('#header_find_me').click(get_location)
+      $('#header_find_me').click(get_location)      
     });
     
   	</script>
+
+
 </head> 
  
 <body class="<%= @page %>"> 
+  <div id="sun"></div>
   <div id="whoami">
   <% unless @user.lat %>
    <form action="/location" method="post">
      <h4>This works better if we know where you are</h4>
      <input  name='postal_code' placeholder="90210"></input> 
      <button type="submit">Find Me</button>
-     <a id="header_find_me"> or locate me with my browser</a>
+     <!-- <a id="header_find_me"> or locate me with my browser</a> -->
    </form>
    
+   
   <% else %>
-  <%= @user.id %><%= @user.lat %><%= @user.lng %>
+    <% @user.id %>
   <% end %>
   </div>
-  <div id="sun"></div>
