@@ -1,6 +1,6 @@
 require 'rubygems'
 require 'sinatra'
-require 'lib/models'
+require './lib/models'
 require 'yaml'
 enable :sessions
   
@@ -16,7 +16,6 @@ before do
       session['identity'] = @user.id
     end
 end
-
 
 get '/' do  
   @page = "front"
@@ -45,7 +44,6 @@ def get_posts(lat, lng, proximity, tags = "")
     where(["lat between ? AND ?", lat - proximity, lat + proximity]).
     order('posts.id DESC')
     @posts = @posts.where(["tags.name = ?", tags]) if tags != ""
-    #.where(["lat between ? AND ?", lat - 1, lat + 1])
   else
     @posts = Post.order('id DESC').limit(10)
   end
@@ -55,18 +53,22 @@ end
 post "/location" do
   puts params
   postal_code = params['postal_code']
+  lat         = params['lat']
+  lng         = params['lng']
+  postal_code = postal_code.gsub " ", ""
+  postal_code = postal_code.upcase
   if postal_code    
+    p postal_code
     location = Location.from_postalcode(postal_code).to_s
     @user.postal_code = postal_code    
-    puts location
+    lat = location['lat']
+    lng = location['lng']
   end
-  if params['lat'] && params['lng'] 
-    location = {}
-    location[:lat] = params['lat']
-    location[:lng] = params['lng']        
+  if lat && lng
+    @user.lat = lat
+    @user.lng = lng
+    
   end
-  @user.lat = location[:lat] || location['lat']
-  @user.lng = location[:lng] || location['lng']
   @user.save
   p @user
   
@@ -108,6 +110,7 @@ post "/post" do
   @post.user = @user if @user
   @post.save  
   @user.contact_method = @post.contact_method
+  @user.email = @post.email
   @user.save if @user.changed
   redirect "/posts"
 end 
@@ -115,6 +118,7 @@ end
 get "/post/new" do
   @post = Post.new
   @post.contact_method = @user.contact_method
+  @post.email          = @user.email
   erb :new_post  
 end 
 
