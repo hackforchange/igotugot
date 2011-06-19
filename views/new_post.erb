@@ -1,8 +1,10 @@
 <%= easy_partial 'header' %>
 
+<%= easy_partial 'subhead' %>
+
 <div id="main" class="new-post">
 
-  <form action="/post" method="post">
+  <form action="/post" method="post" id="new-post">
     <label name="i_got">I got</label>
     <textarea name="i_got"><%= params['i_got']%></textarea>
     <label name="email">my email <span class="comment"> we only use this to send you the edit url for this post.</span></label>

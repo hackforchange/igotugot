@@ -103,15 +103,17 @@ h6 {
 }
 
 #main {
-  width:960px;
+  width:880px;
   overflow:hidden;
-  margin:-200px auto 100px auto;
+  margin-right:auto;
+  margin-left:auto;
+  margin-bottom:100px;
   padding:40px;
   background:#fff;
-  -webkit-box-shadow: 0 0 10px #666;
-       -moz-box-shadow: 0 0 10px #666;
-         -o-box-shadow: 0 0 10px #666;
-            box-shadow: 0 0 10px #666;
+  /*-webkit-box-shadow: 0 0 10px #666;
+         -moz-box-shadow: 0 0 10px #666;
+           -o-box-shadow: 0 0 10px #666;
+              box-shadow: 0 0 10px #666;*/
 }
 
 #sun {
@@ -120,16 +122,19 @@ h6 {
 /*  z-index:1;
   position:relative;
   //float:right;
-*/}
+*/
+}
 
 #main.landing {
   width:550px;
   margin:-100px auto 0 auto;
+  overflow:hidden;
 }
 
 #main.posts {
+  width:960px;
   background:transparent;
-  padding:0;
+  padding:0px;
   -webkit-box-shadow: 0 0 0 transparent;
      -moz-box-shadow: 0 0 0 transparent;
        -o-box-shadow: 0 0 0 transparent;
@@ -139,7 +144,6 @@ h6 {
 .posts ul {
   margin:0;
   clear:both;
-  overflow:hidden;
 }
 
 .posts ul li {
@@ -158,7 +162,7 @@ h6 {
 .mine {
   padding:0 0 10px 0;
   margin:0 0 10px 0;
-  border-bottom:1px solid #ccc;
+  border-bottom:1px dashed #ccc;
 }
 
 #branding, #whereareyou {
@@ -203,17 +207,34 @@ button, .button {
   float:left;
 }
 
+#subhead {
+  width:960px;  
+  margin:-255px auto 20px auto;
+  overflow:hidden;
+}
+
+#wordmark {
+  float:left;
+  width:109px;
+}
+
 #add-new {
-  display:block;
   width:150px;
-  margin:0 0 20px 0;
+  margin:50px 15px 20px 400px;
   color:#fff;
   text-decoration:none;
-  float:right;
-  clear:both;
+  float:left;
 }
 #add-new:hover {
   background-color:#333;
+}
+
+#new-post {
+  width:600px;
+}
+
+#new-post label, #new-post input[type=submit] {
+  display:block;
 }
 
 
