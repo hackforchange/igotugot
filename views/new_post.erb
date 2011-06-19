@@ -2,14 +2,15 @@
 
 <div id="main" class="new-post">
 
-  <form>
+  <form action="/post" method="post">
     <label name="i_got">I got</label>
-    <textarea name="i_got"></textarea>
+    <textarea name="i_got"><%= params['i_got']%></textarea>
     <label name="email">my email <span class="comment"> we only use this to send you the edit url for this post.</span></label>
-    <input type="text" name="email"></input>
+    <input type="text" name="email" value="<%= params['email']%>"></input>
     
     <label name="u_got">U got</label>
-    <textarea name="u_got"></textarea>
+    <textarea name="u_got"><%= params['u_got']%></textarea>
+    <input type='submit'></input>
   </form>  
 </div>
 

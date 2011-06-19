@@ -31,7 +31,18 @@ post "/location" do
 end
 
 get "/posts" do
+  @posts = Post.all
   erb :posts  
+end 
+
+post "/post" do
+  @post = Post.new()
+  @post.i_got = params["i_got"]
+  @post.u_got = params["u_got"]
+  @post.lat   = session['lat']
+  @post.lng   = session['lng']
+  @post.save
+  
 end 
 
 get "/posts/new" do
