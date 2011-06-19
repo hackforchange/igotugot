@@ -7,6 +7,7 @@
       <% @posts.each do |post| %> 
        <li class="post">
         <a href="/post/<%= post.id %>">
+         <fb:like href="http://127.0.0.1:9393/post/<%= post.id %>" send="false" layout="button_count" width="450" show_faces="false" font=""></fb:like>
           <h5>I Got</h5> 
           <div class="mine"><%=h post.i_got%> </div>
           <h5>You Got</h5>  
