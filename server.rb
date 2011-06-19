@@ -44,7 +44,7 @@ def get_posts(lat, lng, proximity, tags = "")
     where(["lng between ? AND ?", lng - proximity, lng + proximity]).
     where(["lat between ? AND ?", lat - proximity, lat + proximity]).
     order('posts.id DESC')
-    @posts = @posts.where("tags.name = 'good'") if tags != ""
+    @posts = @posts.where(["tags.name = ?", tags]) if tags != ""
     #.where(["lat between ? AND ?", lat - 1, lat + 1])
   else
     @posts = Post.order('id DESC').limit(10)
@@ -151,4 +151,8 @@ get "/sessions/show" do
   session.to_yaml
 end  
 
+helpers do
+  include Rack::Utils
+  alias_method :h, :escape_html
+end
 
