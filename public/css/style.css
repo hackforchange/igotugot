@@ -438,5 +438,10 @@ button, .button {
 #search {
   width: 231px;
   float: right;
-  margin: -58px 327px 0 0;
+  margin: 34px 20px 0 0;
+}
+
+#search input[type=button] {
+  background-color: #333;
+  color: white;
 }
