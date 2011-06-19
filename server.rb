@@ -116,8 +116,8 @@ end
 
 get "/post/new" do
   @post = Post.new
-  @post.contact_method = @user.contact_method
-  @post.email          = @user.email
+  @post.contact_method = @user.contact_method if @user.contact_method
+  @post.email          = @user.email if @user.email
   erb :new_post
 end 
 
