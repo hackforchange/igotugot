@@ -3,6 +3,7 @@
 <%= easy_partial 'subhead' %>
 
   <div id="main" class="posts">
+    
     <ul>
       <% @posts.each do |post| %> 
        <li class="post">
@@ -10,11 +11,14 @@
           <% if post.user == @user %>
             <div class="useritem"></div>
           <% end %>
-         <fb:like href="http://<%= request.host_with_port %>/post/<%= post.id %>" send="false" layout="button_count" width="450" show_faces="false" font=""></fb:like>
+
           <h5>I Got</h5> 
-          <div class="mine"><%=h post.i_got%> </div>
+          <div class="mine"><%=h post.i_got%></div>
           <h5>You Got</h5>  
-          <div class="yours"><%=h post.u_got%> </div>
+          <div class="yours"><%=h post.u_got%></div>
+          <h5>Contact</h5>
+          <div class="contact"><%=h post.contact_method%></div>
+          
           <div id="tags">
             <ul>
             <% post.tags.each do |tag| %>
@@ -22,7 +26,7 @@
             <%end%>
             </ul>
           </div> 
-
+           <fb:like href="http://<%= request.host_with_port %>/post/<%= post.id %>" send="false" layout="button_count" width="182" show_faces="false" font=""></fb:like>
         </a>
        </li>
       <% end %>  
