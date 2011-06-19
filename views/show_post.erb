@@ -3,9 +3,10 @@
   <div id="main" class="single-post">
      <div class="post">
       <div id="tags">
+        <h4>Tags:</h4>
         <ul>
         <% @post.tags.each do |tag| %>
-          <li><%= tag.name %></li>
+          <li><%= tag.name %> |x|</li>
         <%end%>
 
         </ul>

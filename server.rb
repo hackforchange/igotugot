@@ -41,8 +41,7 @@ post "/post" do
   @post.u_got = params["u_got"]
   @post.lat   = session['lat']
   @post.lng   = session['lng']
-  @post.save
-  
+  @post.save  
 end 
 
 get "/post/new" do
@@ -71,6 +70,19 @@ post "/tag/:post_id/as/:tag_name" do
     redirect "/posts/#{post.id}"
   end
 end  
+
+post "/untag/:post_id/as/:tag_name" do
+ 
+  post = Post.find(params[:post_id])
+  tag = Tag.find_by_name(params[:tag_name])
+  
+
+  if request.xhr?
+  else
+    redirect "/posts/#{post.id}"
+  end
+end  
+
 
 get "/sessions/clear" do
   session = {}

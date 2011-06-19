@@ -11,6 +11,16 @@
         <h3>U got:</h3>  
         <div class="yours"><%=  post.u_got%> </div>
         <a href="/post/<%= post.id %>">more</a>
+        <div id="tags">
+          <h4>Tags:</h4>
+          <ul>
+          <% post.tags.each do |tag| %>
+            <li><%= tag.name %> |x|</li>
+          <%end%>
+
+          </ul>
+        </div> 
+
        </li>
       <% end %>  
     </ul>
