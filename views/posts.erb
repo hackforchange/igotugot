@@ -16,7 +16,6 @@
     <ul>
       <% @posts.each do |post| %> 
        <li class="post">
-        <a href="/post/<%= post.id %>" class="post-link">
           <% if post.user == @user %>
             <div class="useritem"></div>
           <% end %>
@@ -28,7 +27,6 @@
           <h5>Contact</h5>
           <div class="contact"><%=h post.contact_method%></div>
           
-        </a>
         <div id="tags">
           <ul>
           <% post.tags.each do |tag| %>
@@ -37,7 +35,7 @@
           </ul>
         </div> 
          <fb:like href="http://<%= request.host_with_port %>/post/<%= post.id %>" send="false" layout="button_count" width="182" show_faces="false" font=""></fb:like>
-        
+         <a href="/post/<%= post.id %>" class="post-link">&rarr;</a>
        </li>
       <% end %>
     </ul>
