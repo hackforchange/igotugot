@@ -3,6 +3,15 @@
 <%= easy_partial 'subhead' %>
 
   <div id="main" class="posts">
+    <% if @posts.empty? %>
+    <div id="sadness">
+      <h3>There are no listings within 100 miles of <%= @user.postal_code %> yet.</h3>
+      <a href="/post/new" class="button">Be the first to add a listing in your hood!</a>
+      <h4>OR</h4>
+      <a href="/posts/latest" class="button">View the latest listings from everywhere.</a>
+      
+    </div>
+    <% end %>
     
     <ul>
       <% @posts.each do |post| %> 
@@ -29,7 +38,7 @@
            <fb:like href="http://<%= request.host_with_port %>/post/<%= post.id %>" send="false" layout="button_count" width="182" show_faces="false" font=""></fb:like>
         </a>
        </li>
-      <% end %>  
+      <% end %>
     </ul>
   </div>
   

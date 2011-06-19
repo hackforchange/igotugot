@@ -65,7 +65,7 @@ body, select, input, textarea, button { color: #333; font-family: 'Droid Sans', 
 input, textarea { border:1px solid #ccc; padding:6px; }
 h1, h2, h3, h4, h5, h6 { font-weight: bold; line-height:1.2em; }
 
-a, a:active, a:visited { color: #8BC53F; cursor:pointer; }
+a { color: #8BC53F; cursor:pointer; }
 a:hover { color: #333; }
 
 
@@ -267,6 +267,14 @@ button, .button {
   color:#fff;
   font-size:20px;
   font-weight:bold;
+  text-decoration:none;
+}
+
+#sadness .button {
+  display:block;
+  width:600px;
+  margin:24px auto;
+  text-align:center;
 }
 
 #whereareyou button {
@@ -354,6 +362,11 @@ button, .button {
   float:right;
 }
 
+#sadness {
+  background: white;
+  padding: 50px;
+  text-align:center;
+}
 
 
 .ir { display: block; text-indent: -999em; overflow: hidden; background-repeat: no-repeat; text-align: left; direction: ltr; }
