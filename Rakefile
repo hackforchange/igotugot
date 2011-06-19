@@ -109,11 +109,13 @@ namespace :db do
     haves = ['fairy king prawn', 'bubblegum fellow', 'saga novel', 'orion the thanks', 'grass world', 'air eminem', 'air jihad', 'Ibuki Government', 'Fine Motion', 'Broad Appeal', jabberwock]
     wants = ['carrots', 'eggs', 'spinach', 'rhubarb', 'so much fucking rhubarb', 'beans', 'a new frying pan', 'basil', 'honey', 'ektorp', 'zuchinni', 'cukes', 'rabbits', 'let us', 'lettuce']
     tags = ['good', 'bad', 'ugly', 'sketchy', 'so good', 'so bad', 'so ugly', 'so sketchy', 'do it motherfucker']
+    contacts = ['on my phone 515-222-2134', 'to my email, sirspamalot@email.com', 'beep me, ']
     amounts = ['a handful of', 'a pound of', 'a wheelbarrel of', 'so much', 'so fucking much', 'a bit of', 'hella', 'hecka', 'a shit-tonne of']
     100.times do
       post = Post.create(
                :i_got => "#{amounts[rand(amounts.length)]} #{wants[rand(wants.length)]} and A horse named #{haves[rand(haves.length)]}", 
                :u_got => "#{amounts[rand(amounts.length)]} #{wants[rand(wants.length)]} ",
+               :contact_method => contacts[rand(contacts.length)
                :lat => "34.10300320 - (rand() * 5)", 
                :lng => "-118.41046840 - (rand() * 5)")
       rand(4).times { 

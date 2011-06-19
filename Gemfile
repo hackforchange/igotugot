@@ -6,6 +6,7 @@ gem "shotgun"
 gem "activerecord"
 gem "sqlite3"
 gem "json"
+gem "faker"
 
 group :development do
   gem "rspec"
