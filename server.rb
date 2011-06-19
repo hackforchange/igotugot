@@ -79,6 +79,11 @@ get "/posts" do
   redirect "/posts/nearby"
 end
 
+get "/posts/latest" do
+  @posts = Post.order("posts.id DESC").limit(10)
+  erb :posts
+  
+end
 get "/posts/:proximity/tagged/:tags" do
   lat = @user.lat
   lng = @user.lng
@@ -88,6 +93,7 @@ get "/posts/:proximity/tagged/:tags" do
   erb :posts
   
 end
+
 get "/posts/:proximity" do
   lat = @user.lat 
   lng = @user.lng 
