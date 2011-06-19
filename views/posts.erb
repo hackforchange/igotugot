@@ -1,7 +1,12 @@
 <%= easy_partial 'header' %>
 
+
+
+
 <%= easy_partial 'subhead' %>
-  <div id="search"><input type="text" id="searchbox"></input><input type="button" id="clearbox"></input><div>
+  
+    <div id="search"><input type="text" id="searchbox" placeholder="search"></input><input type="button" id="clearbox" value="X"></input></div>
+    
   <div id="main" class="posts">
     <% if @posts.empty? %>
     <div id="sadness">
@@ -48,6 +53,11 @@
     var txt = $(e.target).val()
     text_search(txt);    
   })
+  $('#clearbox').click(function(e){
+    $('#searchbox').val("")  
+    $('.posts li').show()    
+  })
+
  });
 
  var post_text = $('.posts li')

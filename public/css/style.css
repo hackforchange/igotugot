@@ -435,3 +435,8 @@ button, .button {
   h2, h3{ page-break-after: avoid; }
 }
 
+#search {
+  width: 231px;
+  float: right;
+  margin: -58px 327px 0 0;
+}
