@@ -28,15 +28,16 @@
           <h5>Contact</h5>
           <div class="contact"><%=h post.contact_method%></div>
           
-          <div id="tags">
-            <ul>
-            <% post.tags.each do |tag| %>
-              <li><a href="/posts/nearby/tagged/<%= tag.name %>"><%= tag.name %></a></li>
-            <%end%>
-            </ul>
-          </div> 
-           <fb:like href="http://<%= request.host_with_port %>/post/<%= post.id %>" send="false" layout="button_count" width="182" show_faces="false" font=""></fb:like>
         </a>
+        <div id="tags">
+          <ul>
+          <% post.tags.each do |tag| %>
+            <li><a href="/posts/nearby/tagged/<%= tag.name %>"><%= tag.name %></a></li>
+          <%end%>
+          </ul>
+        </div> 
+         <fb:like href="http://<%= request.host_with_port %>/post/<%= post.id %>" send="false" layout="button_count" width="182" show_faces="false" font=""></fb:like>
+        
        </li>
       <% end %>
     </ul>
