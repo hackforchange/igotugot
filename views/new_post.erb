@@ -21,13 +21,17 @@
         <textarea name="contact" id="contact"><%= params['contact'] || @post.contact_method %></textarea>
         <div class="comment">Example: Please email me at boom@example.com or give me a call at work: 555-555-5555.</div>
       </li>
+      <% if true == false %>
       <li>
         <label name="email">Email</label>
-        <% p params %>
-        <% p @post %>
-        <% p @user %>
         <input type="text" name="email" id="email" value="<%= params['email'] || @post.email || @user.email %>" placeholder="example@example.com"></input>
         <div class="comment">Don't worry, we won't share your email with anyone. We only need it so you can manage your listing.</div>
+      </li>
+      <% end %>
+      <li>
+        <label name="email">Tags</label>
+        <input type="text" name="tags" id="tags" value="<%= params['email'] %>" placeholder="beans, fresh"></input>
+        <div class="comment">Tags, comma separated<br> for example: beans, the best, fresh, not wormy</div>
       </li>
       <li>
         <% if @editing %>

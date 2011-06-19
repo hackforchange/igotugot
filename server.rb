@@ -112,6 +112,16 @@ post "/post" do
   @user.contact_method = @post.contact_method
   @user.email = @post.email
   @user.save if @user.changed
+  
+  if params["tags"]
+    tags = params['tags'].split(",")
+
+    tags.each {|tag| 
+      @post.tags << Tag.find_or_create_by_name( h tag)  
+    }
+  end
+
+
   redirect "/posts"
 end 
 

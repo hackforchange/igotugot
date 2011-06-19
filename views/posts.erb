@@ -22,7 +22,7 @@
           <div id="tags">
             <ul>
             <% post.tags.each do |tag| %>
-              <li><%= tag.name %></li>
+              <li><a href="/posts/nearby/tagged/<%= tag.name %>"><%= tag.name %></a></li>
             <%end%>
             </ul>
           </div> 
