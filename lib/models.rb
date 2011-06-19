@@ -16,7 +16,7 @@ require 'digest/sha1'
 class Post < ActiveRecord::Base
   before_create :set_edit_url
   has_many :tags, :through => :taggings
-  has_many :taggings
+  has_many :taggings, :dependant => :destroy
   belongs_to :user
   def set_edit_url   
     # is it awesome to random?
