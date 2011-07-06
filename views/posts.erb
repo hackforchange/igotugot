@@ -31,7 +31,6 @@
           <div class="yours"><%=h post.u_got%></div>
           <h5>Get in Touch</h5>
           <div class="contact"><%=h post.contact_method%></div>
-          <>
           
         <div id="tags">
           <ul>
@@ -40,11 +39,19 @@
           <%end%>
           </ul>
         </div> 
-         <fb:like href="http://<%= request.host_with_port %>/post/<%= post.id %>" send="false" layout="button_count" width="182" show_faces="false" font=""></fb:like>
+        <fb:like href="http://<%= request.host_with_port %>/post/<%= post.id %>" send="false" layout="button_count" width="182" show_faces="false" font=""></fb:like>
+        
          <a href="/post/<%= post.id %>" class="post-link">&rarr;</a>
+         <div id='post_footer'>
+          <p><%= post.created_at.strftime("%B %d, %Y") %></p>     
+          <div>    
+         
        </li>
+       
       <% end %>
+      
     </ul>
+    
   </div>
 
 <script>
