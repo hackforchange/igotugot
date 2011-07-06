@@ -20,6 +20,11 @@
       </ul>
       <form id="new_tag"><input type="text" id='tag' placeholder="add another tag"></input></form>
     </div>
+
+    <div id='post_footer'>
+     <p>Posted <%= @post.created_at.strftime("%B %d, %Y") %></p>      
+     <p>Post will expire in <%= time_ago_in_words(@post.created_at - 7.days)%></p>
+     <div>    
 </div>
 
   <script>

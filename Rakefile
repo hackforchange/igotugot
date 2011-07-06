@@ -132,3 +132,17 @@ namespace :db do
     end
   end
 end
+
+desc "This task is called by the Heroku cron add-on"
+  task :cron do
+    Post.where(["created_at < ?", Time.now - 7.days]).each {|post| post.delete }
+    # if Time.now.hour % 4 == 0 # run every four hours
+    #   puts "Updating feed..."
+    #   NewsFeed.update
+    #   puts "done."
+    # end
+    # 
+    # if Time.now.hour == 0 # run at midnight
+    #   User.send_reminders
+    # end
+  end

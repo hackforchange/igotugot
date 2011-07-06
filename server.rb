@@ -2,6 +2,9 @@ require 'rubygems'
 require 'sinatra'
 require './lib/models'
 require 'yaml'
+require 'action_view'
+include ActionView::Helpers::DateHelper
+
 enable :sessions
   
 before do  

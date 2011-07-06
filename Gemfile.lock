@@ -2,6 +2,7 @@ GEM
   remote: http://rubygems.org/
   specs:
     ZenTest (4.5.0)
+    actionpack (1.4.0)
     activemodel (3.0.9)
       activesupport (= 3.0.9)
       builder (~> 2.1.2)
@@ -40,8 +41,11 @@ PLATFORMS
 
 DEPENDENCIES
   ZenTest
+  actionpack
   activerecord
+  activesupport
   json
+  rack (~> 1.2)
   rspec
   shotgun
   sinatra

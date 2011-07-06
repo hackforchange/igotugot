@@ -445,3 +445,10 @@ button, .button {
   background-color: #333;
   color: white;
 }
+
+#post_footer{
+  border-top: solid 1px black;
+  margin-top: 10px;
+  padding-top: 10px;
+  font-size: 10px;
+}
