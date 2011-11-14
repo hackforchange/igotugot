@@ -14,5 +14,6 @@ gem "json"
 group :development do
   gem "rspec"
   gem "ZenTest"
+  gem "heroku"
 end
 

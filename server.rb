@@ -2,10 +2,19 @@ require 'rubygems'
 require 'sinatra'
 require './lib/models'
 require 'yaml'
+require 'active_support'
 require 'action_view'
-include ActionView::Helpers::DateHelper
+ include ActionView::Helpers::DateHelper
 
 enable :sessions
+
+# helpers do
+# 	include ActionView::Helpers::DateHelper
+#   # def time_ago_in_words(text)
+#   #   "<em>#{text}</em>"
+#   # end
+# end
+
   
 before do  
     if session['identity'] 
