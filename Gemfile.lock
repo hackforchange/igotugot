@@ -77,8 +77,8 @@ DEPENDENCIES
   heroku
   json
   pg
-  rack (~> 1.2)
+  rack (~> 1.2.1)
   rspec
   shotgun
-  sinatra
+  sinatra (~> 1.2.7)
   sqlite3

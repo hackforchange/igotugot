@@ -30,6 +30,7 @@ namespace :db do
         t.column "lat", :float
         t.column "lng", :float
         t.column "user_id", :integer
+        t.column "deleted", :boolean, :default => false
         t.timestamps 
       end
 
@@ -135,7 +136,7 @@ end
 
 desc "This task is called by the Heroku cron add-on"
   task :cron do
-    Post.where(["created_at < ?", Time.now - 7.days]).each {|post| post.delete }
+    Post.where(["created_at < ?", Time.now - 7.days]).each {|post| post.deleted = true; post.save }
     # if Time.now.hour % 4 == 0 # run every four hours
     #   puts "Updating feed..."
     #   NewsFeed.update
