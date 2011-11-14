@@ -11,6 +11,9 @@ gem "actionpack"
 gem "sqlite3"
 gem "json"
 
+group :production do 
+  gem "pg"
+end
 group :development do
   gem "rspec"
   gem "ZenTest"
