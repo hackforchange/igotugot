@@ -17,6 +17,7 @@ class Post < ActiveRecord::Base
   before_create :set_edit_url
   has_many :tags, :through => :taggings
   has_many :taggings, :dependent => :destroy
+  default_scope  where(:deleted => false)
   belongs_to :user
   def set_edit_url   
     # is it awesome to random?
