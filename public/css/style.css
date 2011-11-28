@@ -394,6 +394,16 @@ button, .button {
   text-align:center;
 }
 
+#note {
+  width:400px;
+  margin:100px auto 0;
+  font-size:11px;
+  line-height:1.3em;
+  text-align:center;
+}
+#note a {
+  color:#000;
+}
 
 .ir { display: block; text-indent: -999em; overflow: hidden; background-repeat: no-repeat; text-align: left; direction: ltr; }
 .hidden { display: none; visibility: hidden; }
