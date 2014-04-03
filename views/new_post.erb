@@ -50,6 +50,12 @@
       <button name="delete">delete</button>            
     </form>
   <% end %>
+  <% if @post.created_at %>
+  <p>Post will expire in <%= time_ago_in_words(@post.created_at - 7.days)%></p>    
+  <% else %>
+  <p>Post will expire in <%= time_ago_in_words(Time.now - 7.days)%></p>    
+  <% end %>
+  
   
   
 </div>
