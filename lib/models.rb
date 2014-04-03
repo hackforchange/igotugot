@@ -3,7 +3,7 @@ require 'active_record'
 
 dbconfig = YAML.load(File.read('./config/database.yml'))
 env = ENV['SINATRA_ENV'] || 'production'
-ActiveRecord::Base.establish_connection (ENV['DATABASE_URL'] || dbconfig['development'])
+ActiveRecord::Base.establish_connection (dbconfig['production'])
 
 class User < ActiveRecord::Base
   has_many :tags, :through => :taggings
