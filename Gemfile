@@ -4,7 +4,7 @@ source "http://rubygems.org"
 gem "sinatra"
 gem "shotgun"
 gem "activerecord"
-gem "sqlite3"
+gem "pg"
 gem "json"
 
 group :development do

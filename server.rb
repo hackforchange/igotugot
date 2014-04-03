@@ -3,9 +3,9 @@ require 'sinatra'
 require './lib/models'
 require 'yaml'
 enable :sessions
-  
-before do  
-    if session['identity'] 
+
+before do
+    if session['identity']
       begin
       @user = User.find(session['identity'])
       rescue
@@ -17,7 +17,7 @@ before do
     end
 end
 
-get '/' do  
+get '/' do
   @page = "front"
   erb :index
 end
@@ -34,9 +34,9 @@ def get_posts(lat, lng, proximity, tags = "")
       proximity = 1
     when 'close' then
       proximity = 0.5
-    else 
+    else
       proximity = 1
-  end  
+  end
   if lat && lng
     @posts = Post.
     includes('tags').
@@ -47,19 +47,20 @@ def get_posts(lat, lng, proximity, tags = "")
     @posts = Post.order('posts.id DESC').limit(10)
   end
   @posts = @posts.includes('tags').where(["tags.name = ?", tags]) if tags != ""
-  
+
 end
 
 post "/location" do
+  puts "/location"
   puts params
   postal_code = params['postal_code']
   lat         = params['lat']
   lng         = params['lng']
   postal_code = postal_code.gsub " ", ""
   postal_code = postal_code.upcase
-  if postal_code    
+  if postal_code
     postal_code
-    @user.postal_code = postal_code    
+    @user.postal_code = postal_code
 
     location = Location.from_postalcode(postal_code)
     lat = location[:lat]
@@ -68,11 +69,11 @@ post "/location" do
   if lat && lng
     'setting'
      @user.lat = lat
-     @user.lng = lng    
+     @user.lng = lng
   end
    @user.save!
    @user
-  
+
   redirect "/posts"
 end
 
@@ -86,7 +87,7 @@ get "/posts/latest" do
 
   @posts = Post.order("posts.id DESC").limit(10)
   erb :posts
-  
+
 end
 get "/posts/:proximity/tagged/:tags" do
   @page = "posts"
@@ -97,19 +98,19 @@ get "/posts/:proximity/tagged/:tags" do
   tags = params[:tags]
   get_posts(lat, lng, proximity, tags)
   erb :posts
-  
+
 end
 
 get "/posts/:proximity" do
   @page = "posts"
 
-  lat = @user.lat 
-  lng = @user.lng 
+  lat = @user.lat
+  lng = @user.lng
   proximity = params[:proximity]
-  
+
   get_posts(lat, lng, proximity)
-  erb :posts  
-end 
+  erb :posts
+end
 
 
 post "/post" do
@@ -120,54 +121,54 @@ post "/post" do
   @post.contact_method = params["contact"]
   @post.email = params['email']
   @post.lat   = @user.lat
-  @post.lng   = @user.lng 
+  @post.lng   = @user.lng
   @post.user = @user if @user
-  @post.save  
+  @post.save
   @user.contact_method = @post.contact_method
   @user.email = @post.email
   @user.save if @user.changed
-  
+
   if params["tags"]
     tags = params['tags'].split(",")
 
-    tags.each {|tag| 
-      @post.tags << Tag.find_or_create_by_name( h tag)  
+    tags.each {|tag|
+      @post.tags << Tag.find_or_create_by_name( h tag)
     }
   end
 
 
   redirect "/posts"
-end 
+end
 
 get "/post/new" do
   @post = Post.new
   @post.contact_method = @user.contact_method if @user.contact_method
   @post.email          = @user.email if @user.email
   erb :new_post
-end 
+end
 
-get "/post/:id" do 
+get "/post/:id" do
   @post = Post.find(params[:id])
-  erb :show_post  
-end 
+  erb :show_post
+end
 
-get "/post/:secret_id/edit" do 
+get "/post/:secret_id/edit" do
   @editing = true
   @post = Post.find_by_secret_id(params[:secret_id])
   erb :new_post
-end 
+end
 
-post "/post/:secret_id/delete" do 
+post "/post/:secret_id/delete" do
   @post = Post.find_by_secret_id(params[:secret_id])
   @post.destroy
   erb :new_post
   redirect "/posts"
-end 
+end
 
 
 
 post "/tag/:post_id/as/:tag_name" do
- 
+
   post = Post.find(params[:post_id])
   tag = Tag.find_or_create_by_name(params[:tag_name])
   begin
@@ -182,7 +183,7 @@ post "/tag/:post_id/as/:tag_name" do
   else
     redirect "/post/#{post.id}"
   end
-end  
+end
 
 get "/untag/:post_id/as/:tag_name" do
   post = Post.find(params[:post_id])
@@ -192,17 +193,17 @@ get "/untag/:post_id/as/:tag_name" do
   else
     redirect "/post/#{post.id}"
   end
-end  
+end
 
 
 get "/sessions/clear" do
   session.clear
   session.to_yaml
-end  
+end
 
 get "/sessions/show" do
   session.to_yaml
-end  
+end
 
 helpers do
   include Rack::Utils
@@ -212,6 +213,6 @@ helpers do
   def tag_list
     Tag.list
   end
-  
+
 end
 
